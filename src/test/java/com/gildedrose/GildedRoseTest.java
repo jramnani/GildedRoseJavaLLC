@@ -21,7 +21,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void qualityIsNeverMoreThan50() {
+    void nonLegendaryQualityIsNeverMoreThan50() {
         String name = "Aged Brie";
         int sellInDays = 0;
         int quality = 50;
@@ -34,7 +34,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void qualityDegradesTwiceAsFastWhenPassedSellIn() {
+    void updateNormalItem_QualityDegradesTwiceAsFastWhenPassedSellIn() {
         String name = "FlavorTown";
         int sellInDays = 0;
         int quality = 50;
