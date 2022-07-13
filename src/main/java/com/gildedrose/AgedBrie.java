@@ -1,0 +1,29 @@
+package com.gildedrose;
+
+public class AgedBrie extends NewItem {
+    public AgedBrie(String name, int sellIn, int quality) {
+        super(name, sellIn, quality);
+        super.qualityBehavior = new DefaultIncrease();
+    }
+
+    public void setQualityBehavior(Updatable updatable) {
+        super.qualityBehavior = updatable;
+    }
+
+    public void setSellInBehavior(Updatable updatable) {
+        super.sellInBehavior = updatable;
+    }
+
+    public void updateQuality() {
+        if (quality < 0) {
+            setQualityBehavior(new IncreasableBy2());
+        }
+        this.quality = qualityBehavior.update(this.quality);
+    }
+
+    public void updateSellIn() {
+
+        this.sellIn = sellInBehavior.update(this.sellIn);
+    }
+
+}
