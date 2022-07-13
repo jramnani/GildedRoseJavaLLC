@@ -4,6 +4,7 @@ public class AgedBrie extends NewItem {
     public AgedBrie(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
         super.qualityBehavior = new DefaultIncrease();
+        super.sellInBehavior = new DefaultDecrease();
     }
 
     public void setQualityBehavior(Updatable updatable) {
@@ -22,7 +23,6 @@ public class AgedBrie extends NewItem {
     }
 
     public void updateSellIn() {
-
         this.sellIn = sellInBehavior.update(this.sellIn);
     }
 
