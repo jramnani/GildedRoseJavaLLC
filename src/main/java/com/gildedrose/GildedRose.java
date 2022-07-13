@@ -11,15 +11,14 @@ class GildedRose {
         //nothing
     }
 
-    public void updateAgedBrie(Item item){
-        if(item.sellIn < 0) {
+    public void updateAgedBrie(Item item) {
+        if (item.sellIn < 0) {
             item.quality += 2;
-        }
-        else {
+        } else {
             item.quality += 1;
         }
 
-        if(item.quality > 50) {
+        if (item.quality > 50) {
             item.quality = 50;
         }
 
@@ -27,6 +26,23 @@ class GildedRose {
     }
 
     public void updateBackstage(Item item) {
+
+        if (item.sellIn > 10) {
+            item.quality += 1;
+        } else if (item.sellIn <= 10
+                && item.sellIn > 5) {
+            item.quality += 2;
+        } else if (item.sellIn <= 5
+                && item.sellIn > 0) {
+            item.quality += 3;
+        } else {
+            item.quality = 0;
+        }
+
+        if (item.quality > 50) {
+            item.quality = 50;
+        }
+
         item.sellIn = item.sellIn - 1;
     }
 
@@ -47,25 +63,9 @@ class GildedRose {
             } else {
                 //This could be a general statement for every item except sulfurase
                 if (item.name.equals("Aged Brie")) {
-                    updateAgedBrie( item);
-                }
-                else if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-
-                    if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (item.sellIn < 11) {
-                            //Why twice?
-                            if (item.quality < 50) {
-                                item.quality = item.quality + 1;
-                            }
-                        }
-
-                        if (item.sellIn < 6) {
-                            if (item.quality < 50) {
-                                item.quality = item.quality + 1;
-                            }
-                        }
-                    }
+                    updateAgedBrie(item);
+                } else if (item.quality < 50) {
+                    updateBackstage(item);
                 }
             }
 
@@ -81,8 +81,6 @@ class GildedRose {
                                 item.quality = item.quality - 1;
                             }
                         }
-                    } else {
-                        item.quality = 0;
                     }
                 } else {
                     if (item.quality < 50) {
@@ -92,4 +90,5 @@ class GildedRose {
             }
         }
     }
+
 }
