@@ -7,8 +7,36 @@ class GildedRose {
         this.items = items;
     }
 
+    public void updateSulfuras() {
+        //nothing
+    }
+
+    public void updateAgedBrie(Item item){
+        if(item.sellIn < 0) {
+            item.quality += 2;
+        }
+        else {
+            item.quality += 1;
+        }
+
+        if(item.quality > 50) {
+            item.quality = 50;
+        }
+
+        item.sellIn = item.sellIn - 1;
+    }
+
+    public void updateBackstage(Item item) {
+        item.sellIn = item.sellIn - 1;
+    }
+
+    public void updateNormal(Item item){
+        item.sellIn = item.sellIn - 1;
+    }
+
     public void updateQuality() {
         for (Item item : items) {
+            // This if is for normal items, maybe think about it being the base else case
             if (!item.name.equals("Aged Brie")
                     && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 if (item.quality > 0) {
@@ -17,11 +45,16 @@ class GildedRose {
                     }
                 }
             } else {
-                if (item.quality < 50) {
+                //This could be a general statement for every item except sulfurase
+                if (item.name.equals("Aged Brie")) {
+                    updateAgedBrie( item);
+                }
+                else if (item.quality < 50) {
                     item.quality = item.quality + 1;
 
                     if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (item.sellIn < 11) {
+                            //Why twice?
                             if (item.quality < 50) {
                                 item.quality = item.quality + 1;
                             }
@@ -49,7 +82,7 @@ class GildedRose {
                             }
                         }
                     } else {
-                        item.quality = item.quality - item.quality;
+                        item.quality = 0;
                     }
                 } else {
                     if (item.quality < 50) {
