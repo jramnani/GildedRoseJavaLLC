@@ -7,24 +7,29 @@ public class AgedBrie extends NewItem {
         super.sellInBehavior = new DefaultDecrease();
     }
 
-    public void setQualityBehavior(Updatable updatable) {
+    private void setQualityBehavior(Updatable updatable) {
         super.qualityBehavior = updatable;
     }
 
-    public void setSellInBehavior(Updatable updatable) {
+    private void setSellInBehavior(Updatable updatable) {
         super.sellInBehavior = updatable;
     }
 
-    public int updateQuality() {
+    private int updateQuality(int quality, int sellIn) {
         if (sellIn <= 0) {
             setQualityBehavior(new IncreasableBy2());
         }
-        this.quality = qualityBehavior.update(this.quality);
-        return Math.min(this.quality, 50);
+        quality = qualityBehavior.update(quality);
+        return Math.min(quality, 50);
     }
 
-    public int updateSellIn() {
-        return sellInBehavior.update(this.sellIn);
+    private int updateSellIn(int sellIn) {
+        return sellInBehavior.update(sellIn);
+    }
+
+    public void age(Item item) {
+        item.quality = updateQuality(item.quality, item.sellIn);
+        item.sellIn = updateSellIn(item.sellIn);
     }
 
 }
