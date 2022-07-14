@@ -13,8 +13,9 @@ public class DefaultItem {
         qualityBehavior = updatable;
     }
 
-    protected void setSellInBehavior(Updatable updatable) {
-        sellInBehavior = updatable;
+    public void age(Item item) {
+        item.quality = updateQuality(item.quality, item.sellIn);
+        item.sellIn = updateSellIn(item.sellIn);
     }
 
     private int updateQuality(int quality, int sellIn) {
@@ -27,11 +28,6 @@ public class DefaultItem {
 
     private int updateSellIn(int sellIn) {
         return sellInBehavior.update(sellIn);
-    }
-
-    public void age(Item item) {
-        item.quality = updateQuality(item.quality, item.sellIn);
-        item.sellIn = updateSellIn(item.sellIn);
     }
 
 }

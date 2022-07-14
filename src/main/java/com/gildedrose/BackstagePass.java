@@ -6,6 +6,11 @@ public class BackstagePass extends DefaultItem {
         super.qualityBehavior = new DefaultIncrease();
     }
 
+    public void age(Item item) {
+        item.quality = updateQuality(item.quality, item.sellIn);
+        item.sellIn = updateSellIn(item.sellIn);
+    }
+
     private int updateQuality(int quality, int sellIn) {
         if (sellIn <= 10
                 && sellIn > 5) {
@@ -24,8 +29,4 @@ public class BackstagePass extends DefaultItem {
         return sellInBehavior.update(sellIn);
     }
 
-    public void age(Item item) {
-        item.quality = updateQuality(item.quality, item.sellIn);
-        item.sellIn = updateSellIn(item.sellIn);
-    }
 }

@@ -1,9 +1,14 @@
 package com.gildedrose;
 
 public class AgedBrie extends DefaultItem {
+
     public AgedBrie() {
         super.qualityBehavior = new DefaultIncrease();
-        super.sellInBehavior = new DefaultDecrease();
+    }
+
+    public void age(Item item) {
+        item.quality = updateQuality(item.quality, item.sellIn);
+        item.sellIn = updateSellIn(item.sellIn);
     }
 
     private int updateQuality(int quality, int sellIn) {
@@ -16,11 +21,6 @@ public class AgedBrie extends DefaultItem {
 
     private int updateSellIn(int sellIn) {
         return sellInBehavior.update(sellIn);
-    }
-
-    public void age(Item item) {
-        item.quality = updateQuality(item.quality, item.sellIn);
-        item.sellIn = updateSellIn(item.sellIn);
     }
 
 }
