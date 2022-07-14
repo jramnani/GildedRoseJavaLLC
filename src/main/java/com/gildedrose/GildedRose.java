@@ -56,7 +56,8 @@ class GildedRose {
                     backstagePass.age(item);
                     break;
                 case "Sulfuras, Hand of Ragnaros":
-                    updateSulfuras();
+                    Sulfuras sulfuras = new Sulfuras();
+                    sulfuras.age(item);
                     break;
                 default:
                     DefaultItem defaultItem = new DefaultItem();
