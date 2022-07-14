@@ -9,11 +9,11 @@ public class DefaultItem {
         this.sellInBehavior = new DefaultDecrease();
     }
 
-    private void setQualityBehavior(Updatable updatable) {
+    protected void setQualityBehavior(Updatable updatable) {
         qualityBehavior = updatable;
     }
 
-    private void setSellInBehavior(Updatable updatable) {
+    protected void setSellInBehavior(Updatable updatable) {
         sellInBehavior = updatable;
     }
 

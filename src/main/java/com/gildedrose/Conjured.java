@@ -1,13 +1,6 @@
 package com.gildedrose;
 
 public class Conjured extends DefaultItem {
-    private void setQualityBehavior(Updatable updatable) {
-        qualityBehavior = updatable;
-    }
-
-    private void setSellInBehavior(Updatable updatable) {
-         sellInBehavior = updatable;
-    }
 
     private int updateQuality(int quality, int sellIn) {
         if (sellIn <= 0) {

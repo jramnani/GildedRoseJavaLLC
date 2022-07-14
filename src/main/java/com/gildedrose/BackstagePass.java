@@ -6,14 +6,6 @@ public class BackstagePass extends DefaultItem {
         super.qualityBehavior = new DefaultIncrease();
     }
 
-    private void setQualityBehavior(Updatable updatable) {
-        super.qualityBehavior = updatable;
-    }
-
-    private void setSellInBehavior(Updatable updatable) {
-        super.sellInBehavior = updatable;
-    }
-
     private int updateQuality(int quality, int sellIn) {
         if (sellIn <= 10
                 && sellIn > 5) {

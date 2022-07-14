@@ -6,14 +6,6 @@ public class AgedBrie extends DefaultItem {
         super.sellInBehavior = new DefaultDecrease();
     }
 
-    private void setQualityBehavior(Updatable updatable) {
-        super.qualityBehavior = updatable;
-    }
-
-    private void setSellInBehavior(Updatable updatable) {
-        super.sellInBehavior = updatable;
-    }
-
     private int updateQuality(int quality, int sellIn) {
         if (sellIn <= 0) {
             setQualityBehavior(new IncreasableBy2());
