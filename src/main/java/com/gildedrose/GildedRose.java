@@ -7,43 +7,6 @@ class GildedRose {
         this.items = items;
     }
 
-    public void updateSulfuras() {
-        //nothing
-    }
-    
-    public void updateBackstage(Item item) {
-
-        if (item.sellIn > 10) {
-            item.quality += 1;
-        } else if (item.sellIn <= 10
-                && item.sellIn > 5) {
-            item.quality += 2;
-        } else if (item.sellIn <= 5
-                && item.sellIn > 0) {
-            item.quality += 3;
-        } else {
-            item.quality = 0;
-        }
-
-        if (item.quality > 50) {
-            item.quality = 50;
-        }
-
-        item.sellIn = item.sellIn - 1;
-    }
-
-    public void updateNormal(Item item){
-        if (item.sellIn <= 0) {
-            item.quality -= 2;
-        } else {
-            item.quality -= 1;
-        }
-        if (item.quality < 0) {
-            item.quality = 0;
-        }
-        item.sellIn = item.sellIn - 1;
-    }
-
     public void updateQuality() {
         for (Item item : items) {
             switch (item.name) {
@@ -66,7 +29,5 @@ class GildedRose {
             }
         }
     }
-
-
 
 }
