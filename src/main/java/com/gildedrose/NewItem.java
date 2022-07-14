@@ -8,10 +8,10 @@ public class NewItem {
     protected Updatable qualityBehavior;
     protected Updatable sellInBehavior;
 
-    public NewItem(String name, int sellIn, int quality) {
-        this.name = name;
-        this.sellIn = sellIn;
-        this.quality = quality;
+    public NewItem(Item item) {
+        this.name = item.name;
+        this.sellIn = item.sellIn;
+        this.quality = item.quality;
     }
 
     public void update() {
