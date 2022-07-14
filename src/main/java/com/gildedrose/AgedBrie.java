@@ -16,7 +16,7 @@ public class AgedBrie extends NewItem {
     }
 
     public void updateQuality() {
-        if (quality < 0) {
+        if (sellIn <= 0) {
             setQualityBehavior(new IncreasableBy2());
         }
         this.quality = qualityBehavior.update(this.quality);
