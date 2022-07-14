@@ -15,15 +15,16 @@ public class AgedBrie extends NewItem {
         super.sellInBehavior = updatable;
     }
 
-    public void updateQuality() {
+    public int updateQuality() {
         if (sellIn <= 0) {
             setQualityBehavior(new IncreasableBy2());
         }
         this.quality = qualityBehavior.update(this.quality);
+        return Math.min(this.quality, 50);
     }
 
-    public void updateSellIn() {
-        this.sellIn = sellInBehavior.update(this.sellIn);
+    public int updateSellIn() {
+        return sellInBehavior.update(this.sellIn);
     }
 
 }
