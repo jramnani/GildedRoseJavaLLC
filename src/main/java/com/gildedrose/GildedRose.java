@@ -52,7 +52,8 @@ class GildedRose {
                     agedBrie.age(item);
                     break;
                 case "Backstage passes to a TAFKAL80ETC concert":
-                    updateBackstage(item);
+                    BackstagePass backstagePass = new BackstagePass();
+                    backstagePass.age(item);
                     break;
                 case "Sulfuras, Hand of Ragnaros":
                     updateSulfuras();
