@@ -22,6 +22,10 @@ class GildedRose {
                     Sulfuras sulfuras = new Sulfuras();
                     sulfuras.age(item);
                     break;
+                case "Conjured":
+                    Conjured conjured = new Conjured();
+                    conjured.age(item);
+                    break;
                 default:
                     DefaultItem defaultItem = new DefaultItem();
                     defaultItem.age(item);
