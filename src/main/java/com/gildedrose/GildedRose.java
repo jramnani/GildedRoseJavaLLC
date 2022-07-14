@@ -58,7 +58,8 @@ class GildedRose {
                     updateSulfuras();
                     break;
                 default:
-                    updateNormal(item);
+                    DefaultItem defaultItem = new DefaultItem();
+                    defaultItem.age(item);
                     break;
             }
         }

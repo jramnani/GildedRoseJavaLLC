@@ -4,6 +4,11 @@ public class DefaultItem {
     protected Updatable qualityBehavior;
     protected Updatable sellInBehavior;
 
+    public DefaultItem() {
+        this.qualityBehavior = new DefaultDecrease();
+        this.sellInBehavior = new DefaultDecrease();
+    }
+
     private void setQualityBehavior(Updatable updatable) {
         qualityBehavior = updatable;
     }
@@ -13,7 +18,11 @@ public class DefaultItem {
     }
 
     private int updateQuality(int quality, int sellIn) {
-        return 0;
+        if (sellIn <= 0) {
+            setQualityBehavior(new DecreasableBy2());
+        }
+        quality = qualityBehavior.update(quality);
+        return Math.max(quality, 0);
     }
 
     private int updateSellIn(int sellIn) {
@@ -21,7 +30,8 @@ public class DefaultItem {
     }
 
     public void age(Item item) {
-        
+        item.quality = updateQuality(item.quality, item.sellIn);
+        item.sellIn = updateSellIn(item.sellIn);
     }
 
 }
