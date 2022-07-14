@@ -48,7 +48,7 @@ class GildedRose {
         for (Item item : items) {
             switch (item.name) {
                 case "Aged Brie":
-                    AgedBrie agedBrie = new AgedBrie(item);
+                    AgedBrie agedBrie = new AgedBrie();
                     agedBrie.age(item);
                     break;
                 case "Backstage passes to a TAFKAL80ETC concert":

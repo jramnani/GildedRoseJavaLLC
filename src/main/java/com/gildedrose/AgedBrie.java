@@ -1,8 +1,7 @@
 package com.gildedrose;
 
 public class AgedBrie extends NewItem {
-    public AgedBrie(Item item) {
-        super(item);
+    public AgedBrie() {
         super.qualityBehavior = new DefaultIncrease();
         super.sellInBehavior = new DefaultDecrease();
     }
