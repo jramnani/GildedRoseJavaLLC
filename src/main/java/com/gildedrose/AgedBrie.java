@@ -13,7 +13,7 @@ public class AgedBrie extends DefaultItem {
 
     private int updateQuality(int quality, int sellIn) {
         if (sellIn <= 0) {
-            setQualityBehavior(new IncreasableBy2());
+            setQualityBehavior(new IncreaseBy2());
         }
         quality = qualityBehavior.update(quality);
         return Math.min(quality, 50);

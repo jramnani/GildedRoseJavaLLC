@@ -20,7 +20,7 @@ public class DefaultItem {
 
     private int updateQuality(int quality, int sellIn) {
         if (sellIn <= 0) {
-            setQualityBehavior(new DecreasableBy2());
+            setQualityBehavior(new DecreaseBy2());
         }
         quality = qualityBehavior.update(quality);
         return Math.max(quality, 0);

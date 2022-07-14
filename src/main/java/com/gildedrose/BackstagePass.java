@@ -14,10 +14,10 @@ public class BackstagePass extends DefaultItem {
     private int updateQuality(int quality, int sellIn) {
         if (sellIn <= 10
                 && sellIn > 5) {
-            setQualityBehavior(new IncreasableBy2());
+            setQualityBehavior(new IncreaseBy2());
         } else if (sellIn <= 5
                 && sellIn > 0) {
-            setQualityBehavior(new IncreasableBy3());
+            setQualityBehavior(new IncreaseBy3());
         } else if (sellIn == 0) {
             setQualityBehavior(new DecreaseToZero());
         }

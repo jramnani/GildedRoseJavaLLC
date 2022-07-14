@@ -1,5 +1,5 @@
 package com.gildedrose;
 
-public class IncreasableBy3 implements Updatable {
+public class IncreaseBy3 implements Updatable {
     public int update(int value) { return value + 3; }
 }
