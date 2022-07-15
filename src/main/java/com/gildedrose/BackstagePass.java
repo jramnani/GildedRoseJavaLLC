@@ -1,16 +1,10 @@
 package com.gildedrose;
 
 public class BackstagePass {
-    private Updatable qualityBehavior;
-    private Updatable sellInBehavior;
+    private int qualityIncrementation;
 
     public BackstagePass() {
-        qualityBehavior = new DefaultIncrease();
-        sellInBehavior = new DefaultDecrease();
-    }
-
-    public void setQualityBehavior(Updatable updatable) {
-        qualityBehavior = updatable;
+        this.qualityIncrementation = 1;
     }
 
     public void age(Item item) {
@@ -21,19 +15,19 @@ public class BackstagePass {
     private int updateQuality(int quality, int sellIn) {
         if (sellIn <= 10
                 && sellIn > 5) {
-            setQualityBehavior(new IncreaseBy2());
+            this.qualityIncrementation = 2;
         } else if (sellIn <= 5
                 && sellIn > 0) {
-            setQualityBehavior(new IncreaseBy3());
+            this.qualityIncrementation = 3;
         } else if (sellIn == 0) {
-            setQualityBehavior(new DecreaseToZero());
+            this.qualityIncrementation = -(quality);
         }
-        quality = qualityBehavior.update(quality);
+        quality += qualityIncrementation;
         return Math.min(quality, 50);
     }
 
     private int updateSellIn(int sellIn) {
-        return sellInBehavior.update(sellIn);
+        return sellIn - 1;
     }
 
 }
