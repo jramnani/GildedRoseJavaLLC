@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class Sulfuras extends DefaultItem {
+public class Sulfuras {
 
     public void age(Item item) {}
 

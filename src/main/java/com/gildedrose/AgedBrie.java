@@ -12,7 +12,7 @@ public class AgedBrie {
     protected void setQualityBehavior(Updatable updatable) {
         qualityBehavior = updatable;
     }
-    
+
     public void age(Item item) {
         item.quality = updateQuality(item.quality, item.sellIn);
         item.sellIn = updateSellIn(item.sellIn);

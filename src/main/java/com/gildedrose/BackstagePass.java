@@ -1,9 +1,16 @@
 package com.gildedrose;
 
-public class BackstagePass extends DefaultItem {
+public class BackstagePass {
+    private Updatable qualityBehavior;
+    private Updatable sellInBehavior;
 
     public BackstagePass() {
-        super.qualityBehavior = new DefaultIncrease();
+        qualityBehavior = new DefaultIncrease();
+        sellInBehavior = new DefaultDecrease();
+    }
+
+    public void setQualityBehavior(Updatable updatable) {
+        qualityBehavior = updatable;
     }
 
     public void age(Item item) {
