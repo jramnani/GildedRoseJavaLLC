@@ -1,16 +1,10 @@
 package com.gildedrose;
 
 public class AgedBrie {
-    private Updatable qualityBehavior;
-    private Updatable sellInBehavior;
+    private int qualityIncrementation;
 
     public AgedBrie() {
-        qualityBehavior = new DefaultIncrease();
-        sellInBehavior = new DefaultIncrease();
-    }
-
-    protected void setQualityBehavior(Updatable updatable) {
-        qualityBehavior = updatable;
+        this.qualityIncrementation = 1;
     }
 
     public void age(Item item) {
@@ -20,14 +14,14 @@ public class AgedBrie {
 
     private int updateQuality(int quality, int sellIn) {
         if (sellIn <= 0) {
-            setQualityBehavior(new IncreaseBy2());
+            this.qualityIncrementation = 2;
         }
-        quality = qualityBehavior.update(quality);
+        quality += this.qualityIncrementation;
         return Math.min(quality, 50);
     }
 
     private int updateSellIn(int sellIn) {
-        return sellInBehavior.update(sellIn);
+        return sellIn - 1;
     }
 
 }
