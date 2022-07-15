@@ -14,7 +14,7 @@ public class Conjured extends DefaultItem {
 
     private int updateQuality(int quality, int sellIn) {
         if (sellIn <= 0) {
-            conjuredQualityDegradation = super.qualityDegradation * 2;
+            conjuredQualityDegradation = conjuredQualityDegradation * 2;
         }
         quality -= conjuredQualityDegradation;
         return Math.max(quality, 0);
