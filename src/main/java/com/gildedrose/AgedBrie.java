@@ -1,11 +1,18 @@
 package com.gildedrose;
 
-public class AgedBrie extends DefaultItem {
+public class AgedBrie {
+    private Updatable qualityBehavior;
+    private Updatable sellInBehavior;
 
     public AgedBrie() {
-        super.qualityBehavior = new DefaultIncrease();
+        qualityBehavior = new DefaultIncrease();
+        sellInBehavior = new DefaultIncrease();
     }
 
+    protected void setQualityBehavior(Updatable updatable) {
+        qualityBehavior = updatable;
+    }
+    
     public void age(Item item) {
         item.quality = updateQuality(item.quality, item.sellIn);
         item.sellIn = updateSellIn(item.sellIn);
