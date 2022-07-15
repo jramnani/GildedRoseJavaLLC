@@ -1,16 +1,11 @@
 package com.gildedrose;
 
 public class DefaultItem {
-    protected Updatable qualityBehavior;
-    protected Updatable sellInBehavior;
+
+    protected int qualityDegradation;
 
     public DefaultItem() {
-        this.qualityBehavior = new DefaultDecrease();
-        this.sellInBehavior = new DefaultDecrease();
-    }
-
-    protected void setQualityBehavior(Updatable updatable) {
-        qualityBehavior = updatable;
+        this.qualityDegradation = 1;
     }
 
     public void age(Item item) {
@@ -20,14 +15,14 @@ public class DefaultItem {
 
     private int updateQuality(int quality, int sellIn) {
         if (sellIn <= 0) {
-            setQualityBehavior(new DecreaseBy2());
+            this.qualityDegradation = 2;
         }
-        quality = qualityBehavior.update(quality);
+        quality -= this.qualityDegradation;
         return Math.max(quality, 0);
     }
 
     private int updateSellIn(int sellIn) {
-        return sellInBehavior.update(sellIn);
+        return sellIn - 1;
     }
 
 }

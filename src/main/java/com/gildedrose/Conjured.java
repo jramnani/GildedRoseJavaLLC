@@ -1,16 +1,10 @@
 package com.gildedrose;
 
-public class Conjured {
-    private Updatable qualityBehavior;
-    private Updatable sellInBehavior;
+public class Conjured extends DefaultItem {
+    private int conjuredQualityDegradation;
 
     public Conjured() {
-        this.qualityBehavior = new DefaultDecrease();
-        this.sellInBehavior = new DefaultDecrease();
-    }
-
-    public void setQualityBehavior(Updatable updatable) {
-        qualityBehavior = updatable;
+        this.conjuredQualityDegradation = super.qualityDegradation * 2;
     }
 
     public void age(Item item) {
@@ -20,19 +14,14 @@ public class Conjured {
 
     private int updateQuality(int quality, int sellIn) {
         if (sellIn <= 0) {
-            setQualityBehavior(new DecreaseBy2());
+            conjuredQualityDegradation = super.qualityDegradation * 2;
         }
-        quality = doubleDefaultUpdate(quality);
+        quality -= conjuredQualityDegradation;
         return Math.max(quality, 0);
     }
 
     private int updateSellIn(int sellIn) {
-        return sellInBehavior.update(sellIn);
-    }
-
-    private int doubleDefaultUpdate(int quality) {
-        int initialUpdate = qualityBehavior.update(quality);
-        return qualityBehavior.update(initialUpdate);
+        return sellIn - 1;
     }
 
 }
