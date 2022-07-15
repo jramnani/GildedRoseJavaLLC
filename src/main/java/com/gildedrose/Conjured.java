@@ -1,6 +1,17 @@
 package com.gildedrose;
 
-public class Conjured extends DefaultItem {
+public class Conjured {
+    private Updatable qualityBehavior;
+    private Updatable sellInBehavior;
+
+    public Conjured() {
+        this.qualityBehavior = new DefaultDecrease();
+        this.sellInBehavior = new DefaultDecrease();
+    }
+
+    public void setQualityBehavior(Updatable updatable) {
+        qualityBehavior = updatable;
+    }
 
     public void age(Item item) {
         item.quality = updateQuality(item.quality, item.sellIn);
