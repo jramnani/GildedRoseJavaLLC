@@ -164,4 +164,30 @@ class GildedRoseTest {
         assertEquals(0, app.items[0].quality);
     }
 
+    @Test
+    void conjured_update_qualityDropsTwiceAsFastAsNormalItems() {
+        String name = "Conjured";
+        int sellInDays = 27;
+        int quality = 32;
+        Item[] items = new Item[] { new Item(name, sellInDays, quality) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(30, app.items[0].quality);
+    }
+    @Test
+    void conjured_update_qualityDropsTwiceAsFastAsNormalItemsWhenSellInIsPassed0() {
+        String name = "Conjured";
+        int sellInDays = 0;
+        int quality = 32;
+        Item[] items = new Item[] { new Item(name, sellInDays, quality) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(28, app.items[0].quality);
+    }
+
+
 }
