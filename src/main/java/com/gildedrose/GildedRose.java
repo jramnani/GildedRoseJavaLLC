@@ -8,37 +8,41 @@ class GildedRose {
 
     public GildedRose(Item[] items) {
         this.items = items;
-        this.inventory = new HashMap<>();
+        this.inventory = populateInventory();
     }
 
     public void updateQuality() {
-        populateInventory();
         for (Item item : items) {
             Ageable ageable = inventory.get(item);
             ageable.age(item);
         }
     }
 
-    private void populateInventory() {
+    private HashMap<Item, Ageable> populateInventory() {
+        HashMap<Item, Ageable> itemInventory = new HashMap<>();
         for (Item item : items) {
             switch (item.name){
                 case "Aged Brie":
-                    inventory.put(item, new AgedBrie());
+                    itemInventory.put(item, new AgedBrie());
                     break;
                 case "Backstage passes to a TAFKAL80ETC concert":
-                    inventory.put(item, new BackstagePass());
+                    itemInventory.put(item, new BackstagePass());
                     break;
                 case "Sulfuras, Hand of Ragnaros":
-                    inventory.put(item, new Sulfuras());
+                    itemInventory.put(item, new Sulfuras());
                     break;
                 case "Conjured":
-                    inventory.put(item, new Conjured());
+                    itemInventory.put(item, new Conjured());
+                    break;
+                case "Red Wine":
+                    itemInventory.put(item, new RedWine());
                     break;
                 default:
-                    inventory.put(item, new DefaultItem());
+                    itemInventory.put(item, new DefaultItem());
                     break;
             }
         }
+        return itemInventory;
     }
 
 }
