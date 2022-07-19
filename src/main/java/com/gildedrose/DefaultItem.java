@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class DefaultItem {
+public class DefaultItem implements Ageable {
 
     protected int qualityDegradation;
 

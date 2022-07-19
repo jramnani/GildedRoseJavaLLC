@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class BackstagePass {
+public class BackstagePass implements Ageable {
     private int qualityIncrementation;
 
     public BackstagePass() {

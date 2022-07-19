@@ -7,6 +7,7 @@ public class Conjured extends DefaultItem {
         this.conjuredQualityDegradation = super.qualityDegradation * 2;
     }
 
+    @Override
     public void age(Item item) {
         item.quality = updateQuality(item.quality, item.sellIn);
         item.sellIn = updateSellIn(item.sellIn);
