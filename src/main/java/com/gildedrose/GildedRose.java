@@ -1,34 +1,41 @@
 package com.gildedrose;
 
+import java.util.HashMap;
+
 class GildedRose {
+    private final HashMap<Item, Ageable> inventory;
     Item[] items;
 
     public GildedRose(Item[] items) {
         this.items = items;
+        this.inventory = new HashMap<>();
     }
 
     public void updateQuality() {
+        populateInventory();
         for (Item item : items) {
-            switch (item.name) {
+            Ageable ageable = inventory.get(item);
+            ageable.age(item);
+        }
+    }
+
+    private void populateInventory() {
+        for (Item item : items) {
+            switch (item.name){
                 case "Aged Brie":
-                    AgedBrie agedBrie = new AgedBrie();
-                    agedBrie.age(item);
+                    inventory.put(item, new AgedBrie());
                     break;
                 case "Backstage passes to a TAFKAL80ETC concert":
-                    BackstagePass backstagePass = new BackstagePass();
-                    backstagePass.age(item);
+                    inventory.put(item, new BackstagePass());
                     break;
                 case "Sulfuras, Hand of Ragnaros":
-                    Sulfuras sulfuras = new Sulfuras();
-                    sulfuras.age(item);
+                    inventory.put(item, new Sulfuras());
                     break;
                 case "Conjured":
-                    Conjured conjured = new Conjured();
-                    conjured.age(item);
+                    inventory.put(item, new Conjured());
                     break;
                 default:
-                    DefaultItem defaultItem = new DefaultItem();
-                    defaultItem.age(item);
+                    inventory.put(item, new DefaultItem());
                     break;
             }
         }
