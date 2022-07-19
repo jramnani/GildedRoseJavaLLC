@@ -4,37 +4,36 @@ public class RedWine extends DefaultItem {
 
     private final float redWineQualityDegradationPastSellIn;
     private final float redWineQualityDegradation;
-    private float remainder;
-    private float amountToDegradeBy;
+    private final Item item;
+    private float preciseQuality;
 
-    public RedWine() {
+    public RedWine(Item item) {
+        super(item);
         this.redWineQualityDegradation = super.qualityDegradation/3.0f;
         this.redWineQualityDegradationPastSellIn = this.redWineQualityDegradation * 2.0f;
-        this.amountToDegradeBy = 0;
-        this.remainder = 0;
+        this.item = item;
+        this.preciseQuality = item.quality;
     }
 
-    public void age(Item item) {
-        item.quality = updateQuality(item.quality, item.sellIn);
-        item.sellIn = updateSellIn(item.sellIn);
+    public void age() {
+        item.quality = updateQuality();
+        item.sellIn = updateSellIn();
     }
 
-    private int updateQuality(float quality, int sellIn) {
-        amountToDegradeBy -= remainder;
-        if(sellIn <= 0) {
-            amountToDegradeBy += redWineQualityDegradationPastSellIn;
+    private int updateQuality() {
+        if(item.sellIn <= 0) {
+            preciseQuality -= redWineQualityDegradationPastSellIn;
         }
         else {
-            amountToDegradeBy += redWineQualityDegradation;
+            preciseQuality -= redWineQualityDegradation;
         }
 
-        int qualityToReturn = Math.round(quality - amountToDegradeBy);
-        remainder = quality - qualityToReturn;
+        int qualityToReturn = Math.round(preciseQuality);
 
         return Math.max(qualityToReturn, 0);
     }
 
-    private int updateSellIn(int sellIn) {
-        return sellIn - 1;
+    private int updateSellIn() {
+        return item.sellIn - 1;
     }
 }

@@ -2,32 +2,34 @@ package com.gildedrose;
 
 public class BackstagePass implements Ageable {
     private int qualityIncrementation;
+    private final Item item;
 
-    public BackstagePass() {
+    public BackstagePass(Item item) {
+        this.item = item;
         this.qualityIncrementation = 1;
     }
 
-    public void age(Item item) {
-        item.quality = updateQuality(item.quality, item.sellIn);
-        item.sellIn = updateSellIn(item.sellIn);
+    public void age() {
+        item.quality = updateQuality();
+        item.sellIn = updateSellIn();
     }
 
-    private int updateQuality(int quality, int sellIn) {
-        if (sellIn <= 10
-                && sellIn > 5) {
+    private int updateQuality() {
+        if (item.sellIn <= 10
+                && item.sellIn > 5) {
             this.qualityIncrementation = 2;
-        } else if (sellIn <= 5
-                && sellIn > 0) {
+        } else if (item.sellIn <= 5
+                && item.sellIn > 0) {
             this.qualityIncrementation = 3;
-        } else if (sellIn == 0) {
-            this.qualityIncrementation = -(quality);
+        } else if (item.sellIn == 0) {
+            this.qualityIncrementation = -(item.quality);
         }
-        quality += qualityIncrementation;
-        return Math.min(quality, 50);
+        item.quality += qualityIncrementation;
+        return Math.min(item.quality, 50);
     }
 
-    private int updateSellIn(int sellIn) {
-        return sellIn - 1;
+    private int updateSellIn() {
+        return item.sellIn - 1;
     }
 
 }

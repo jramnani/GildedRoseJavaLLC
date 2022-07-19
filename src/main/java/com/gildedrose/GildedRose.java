@@ -14,7 +14,7 @@ class GildedRose {
     public void updateQuality() {
         for (Item item : items) {
             Ageable ageable = inventory.get(item);
-            ageable.age(item);
+            ageable.age();
         }
     }
 
@@ -23,22 +23,22 @@ class GildedRose {
         for (Item item : items) {
             switch (item.name){
                 case "Aged Brie":
-                    itemInventory.put(item, new AgedBrie());
+                    itemInventory.put(item, new AgedBrie(item));
                     break;
                 case "Backstage passes to a TAFKAL80ETC concert":
-                    itemInventory.put(item, new BackstagePass());
+                    itemInventory.put(item, new BackstagePass(item));
                     break;
                 case "Sulfuras, Hand of Ragnaros":
-                    itemInventory.put(item, new Sulfuras());
+                    itemInventory.put(item, new Sulfuras(item));
                     break;
                 case "Conjured":
-                    itemInventory.put(item, new Conjured());
+                    itemInventory.put(item, new Conjured(item));
                     break;
                 case "Red Wine":
-                    itemInventory.put(item, new RedWine());
+                    itemInventory.put(item, new RedWine(item));
                     break;
                 default:
-                    itemInventory.put(item, new DefaultItem());
+                    itemInventory.put(item, new DefaultItem(item));
                     break;
             }
         }

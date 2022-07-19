@@ -2,27 +2,30 @@ package com.gildedrose;
 
 public class Conjured extends DefaultItem {
     private int conjuredQualityDegradation;
+    private final Item item;
 
-    public Conjured() {
+    public Conjured(Item item) {
+        super(item);
+        this.item = item;
         this.conjuredQualityDegradation = super.qualityDegradation * 2;
     }
 
     @Override
-    public void age(Item item) {
-        item.quality = updateQuality(item.quality, item.sellIn);
-        item.sellIn = updateSellIn(item.sellIn);
+    public void age() {
+        item.quality = updateQuality();
+        item.sellIn = updateSellIn();
     }
 
-    private int updateQuality(int quality, int sellIn) {
-        if (sellIn <= 0) {
+    private int updateQuality() {
+        if (item.sellIn <= 0) {
             conjuredQualityDegradation = conjuredQualityDegradation * 2;
         }
-        quality -= conjuredQualityDegradation;
-        return Math.max(quality, 0);
+        item.quality -= conjuredQualityDegradation;
+        return Math.max(item.quality, 0);
     }
 
-    private int updateSellIn(int sellIn) {
-        return sellIn - 1;
+    private int updateSellIn() {
+        return item.sellIn - 1;
     }
 
 }
