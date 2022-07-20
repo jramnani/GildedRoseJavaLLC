@@ -4,11 +4,11 @@ public class DefaultItem implements Ageable {
 
     private final Item item;
     private final int minQuality;
-    protected int qualityDegradation;
+    protected int qualityCoefficient;
 
     public DefaultItem(Item item) {
         this.item = item;
-        this.qualityDegradation = 1;
+        this.qualityCoefficient = 1;
         this.minQuality = 0;
     }
 
@@ -19,9 +19,9 @@ public class DefaultItem implements Ageable {
 
     private int updateQuality() {
         if (item.sellIn <= 0) {
-            this.qualityDegradation = 2;
+            this.qualityCoefficient = 2;
         }
-        item.quality -= this.qualityDegradation;
+        item.quality -= this.qualityCoefficient;
         return Math.max(item.quality, minQuality);
     }
 

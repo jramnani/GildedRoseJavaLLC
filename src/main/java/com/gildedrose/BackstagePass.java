@@ -2,12 +2,12 @@ package com.gildedrose;
 
 public class BackstagePass implements Ageable {
     private final int maxQuality;
-    private int qualityIncrementation;
+    private int qualityCoefficient;
     private final Item item;
 
     public BackstagePass(Item item) {
         this.item = item;
-        this.qualityIncrementation = 1;
+        this.qualityCoefficient = 1;
         this.maxQuality = 50;
     }
 
@@ -19,14 +19,14 @@ public class BackstagePass implements Ageable {
     private int updateQuality() {
         if (item.sellIn <= 10
                 && item.sellIn > 5) {
-            this.qualityIncrementation = 2;
+            this.qualityCoefficient = 2;
         } else if (item.sellIn <= 5
                 && item.sellIn > 0) {
-            this.qualityIncrementation = 3;
+            this.qualityCoefficient = 3;
         } else if (item.sellIn == 0) {
-            this.qualityIncrementation = -(item.quality);
+            this.qualityCoefficient = -(item.quality);
         }
-        item.quality += qualityIncrementation;
+        item.quality += qualityCoefficient;
         return Math.min(item.quality, maxQuality);
     }
 

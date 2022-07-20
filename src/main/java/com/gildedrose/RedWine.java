@@ -11,7 +11,7 @@ public class RedWine extends DefaultItem {
 
     public RedWine(Item item) {
         super(item);
-        this.redWineQualityDegradation = super.qualityDegradation/3.0f;
+        this.redWineQualityDegradation = super.qualityCoefficient /3.0f;
         this.redWineQualityDegradationPastSellIn = this.redWineQualityDegradation * 2.0f;
         this.item = item;
         this.preciseQuality = item.quality;
