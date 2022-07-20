@@ -25,7 +25,7 @@ public class DefaultItem implements Ageable {
         return Math.max(item.quality, minQuality);
     }
 
-    private int updateSellIn() {
+    protected int updateSellIn() {
         return item.sellIn - 1;
     }
 

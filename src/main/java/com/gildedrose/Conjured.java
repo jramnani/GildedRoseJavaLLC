@@ -17,7 +17,7 @@ public class Conjured extends DefaultItem {
     @Override
     public void age() {
         item.quality = updateQuality();
-        item.sellIn = updateSellIn();
+        item.sellIn = super.updateSellIn();
     }
 
     private int updateQuality() {
@@ -29,10 +29,6 @@ public class Conjured extends DefaultItem {
         }
 
         return Math.max(item.quality, minQuality);
-    }
-
-    private int updateSellIn() {
-        return item.sellIn - 1;
     }
 
 }

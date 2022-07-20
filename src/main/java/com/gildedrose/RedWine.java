@@ -20,7 +20,7 @@ public class RedWine extends DefaultItem {
 
     public void age() {
         item.quality = updateQuality();
-        item.sellIn = updateSellIn();
+        item.sellIn = super.updateSellIn();
     }
 
     private int updateQuality() {
@@ -36,7 +36,4 @@ public class RedWine extends DefaultItem {
         return Math.max(qualityToReturn, minQuality);
     }
 
-    private int updateSellIn() {
-        return item.sellIn - 1;
-    }
 }
