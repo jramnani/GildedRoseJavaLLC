@@ -1,12 +1,14 @@
 package com.gildedrose;
 
 public class BackstagePass implements Ageable {
+    private final int maxQuality;
     private int qualityIncrementation;
     private final Item item;
 
     public BackstagePass(Item item) {
         this.item = item;
         this.qualityIncrementation = 1;
+        this.maxQuality = 50;
     }
 
     public void age() {
@@ -25,7 +27,7 @@ public class BackstagePass implements Ageable {
             this.qualityIncrementation = -(item.quality);
         }
         item.quality += qualityIncrementation;
-        return Math.min(item.quality, 50);
+        return Math.min(item.quality, maxQuality);
     }
 
     private int updateSellIn() {

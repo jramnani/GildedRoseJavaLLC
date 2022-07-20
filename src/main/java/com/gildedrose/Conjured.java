@@ -4,12 +4,14 @@ public class Conjured extends DefaultItem {
     private final int conjuredQualityDegradationPastSellIn;
     private final int conjuredQualityDegradation;
     private final Item item;
+    private final int minQuality;
 
     public Conjured(Item item) {
         super(item);
         this.item = item;
         this.conjuredQualityDegradation = super.qualityDegradation * 2;
         this.conjuredQualityDegradationPastSellIn = this.conjuredQualityDegradation * 2;
+        this.minQuality = 0;
     }
 
     @Override
@@ -25,8 +27,8 @@ public class Conjured extends DefaultItem {
         else {
             item.quality -= conjuredQualityDegradation;
         }
-        
-        return Math.max(item.quality, 0);
+
+        return Math.max(item.quality, minQuality);
     }
 
     private int updateSellIn() {
