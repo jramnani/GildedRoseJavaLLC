@@ -17,8 +17,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        int MinQuality = 0;
-        assertTrue(app.items[0].quality >= MinQuality);
+        assertTrue(app.items[0].quality >= 0);
     }
 
     @Test
@@ -31,8 +30,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        int expectedQuality = 6;
-        assertEquals(expectedQuality, app.items[0].sellIn);
+        assertEquals(6, app.items[0].sellIn);
     }
 
     @Test
@@ -45,8 +43,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        int expectedQuality = 49;
-        assertEquals(expectedQuality, app.items[0].quality);
+        assertEquals(49, app.items[0].quality);
     }
 
     @Test
@@ -59,8 +56,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        int expectedQuality = 48;
-        assertEquals(expectedQuality, app.items[0].quality);
+        assertEquals(48, app.items[0].quality);
     }
 
     @Test
@@ -73,8 +69,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        int expectedQuality = 8;
-        assertEquals(expectedQuality, app.items[0].quality);
+        assertEquals(8, app.items[0].quality);
     }
 
     @Test
@@ -87,8 +82,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        int expectedQuality = 9;
-        assertEquals(expectedQuality, app.items[0].quality);
+        assertEquals(9, app.items[0].quality);
     }
 
     @Test
@@ -101,8 +95,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        int maxQuality = 50;
-        assertTrue(app.items[0].quality <= maxQuality);
+        assertTrue(app.items[0].quality <= 50);
     }
 
     @Test
@@ -115,10 +108,8 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        int expectedQuality = 80;
-        int expectedSellIn = 7;
-        assertEquals(expectedQuality, app.items[0].quality);
-        assertEquals(expectedSellIn, app.items[0].sellIn);
+        assertEquals(80, app.items[0].quality);
+        assertEquals(7, app.items[0].sellIn);
     }
 
     @Test
@@ -131,8 +122,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        int expectedQuality = 33;
-        assertEquals(expectedQuality, app.items[0].quality);
+        assertEquals(33, app.items[0].quality);
     }
 
     @Test
@@ -145,8 +135,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        int expectedQuality = 34;
-        assertEquals(expectedQuality, app.items[0].quality);
+        assertEquals(34, app.items[0].quality);
     }
 
     @Test
@@ -159,8 +148,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        int expectedQuality = 35;
-        assertEquals(expectedQuality, app.items[0].quality);
+        assertEquals(35, app.items[0].quality);
     }
 
     @Test
@@ -173,8 +161,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        int expectedQuality = 0;
-        assertEquals(expectedQuality, app.items[0].quality);
+        assertEquals(0, app.items[0].quality);
     }
 
     @Test
@@ -187,8 +174,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        int expectedQuality = 30;
-        assertEquals(expectedQuality, app.items[0].quality);
+        assertEquals(30, app.items[0].quality);
     }
     @Test
     void conjured_update_qualityDropsTwiceAsFastAsNormalItemsWhenSellInIsPassed0() {
@@ -200,8 +186,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        int expectedQuality = 28;
-        assertEquals(expectedQuality, app.items[0].quality);
+        assertEquals(28, app.items[0].quality);
     }
 
     @Test
@@ -216,8 +201,7 @@ class GildedRoseTest {
         app.updateQuality();
         app.updateQuality();
 
-        int expectedQuality = 31;
-        assertEquals(expectedQuality, app.items[0].quality);
+        assertEquals(31, app.items[0].quality);
     }
 
     @Test
@@ -232,8 +216,7 @@ class GildedRoseTest {
         app.updateQuality();
         app.updateQuality();
 
-        int expectedQuality = 30;
-        assertEquals(expectedQuality, app.items[0].quality);
+        assertEquals(30, app.items[0].quality);
     }
 
 }
