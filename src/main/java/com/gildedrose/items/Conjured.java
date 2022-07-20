@@ -1,4 +1,6 @@
-package com.gildedrose;
+package com.gildedrose.items;
+
+import com.gildedrose.goblins_grotto.Item;
 
 public class Conjured extends DefaultItem {
     private final int conjuredQualityCoefficientPastSellIn;
