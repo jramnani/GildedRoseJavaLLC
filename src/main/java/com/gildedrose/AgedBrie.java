@@ -1,27 +1,32 @@
 package com.gildedrose;
 
-public class AgedBrie {
-    private int qualityIncrementation;
+public class AgedBrie implements Ageable {
+    private int qualityCoefficient;
+    private final Item item;
+    private final int maxQuality;
 
-    public AgedBrie() {
-        this.qualityIncrementation = 1;
+
+    public AgedBrie(Item item) {
+        this.item = item;
+        this.qualityCoefficient = 1;
+        this.maxQuality = 50;
     }
 
-    public void age(Item item) {
-        item.quality = updateQuality(item.quality, item.sellIn);
-        item.sellIn = updateSellIn(item.sellIn);
+    public void age() {
+        item.quality = updateQuality();
+        item.sellIn = updateSellIn();
     }
 
-    private int updateQuality(int quality, int sellIn) {
-        if (sellIn <= 0) {
-            this.qualityIncrementation = 2;
+    private int updateQuality() {
+        if (item.sellIn <= 0) {
+            this.qualityCoefficient = 2;
         }
-        quality += this.qualityIncrementation;
-        return Math.min(quality, 50);
+        item.quality += this.qualityCoefficient;
+        return Math.min(item.quality, maxQuality);
     }
 
-    private int updateSellIn(int sellIn) {
-        return sellIn - 1;
+    private int updateSellIn() {
+        return item.sellIn - 1;
     }
 
 }

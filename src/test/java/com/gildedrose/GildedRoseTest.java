@@ -189,5 +189,34 @@ class GildedRoseTest {
         assertEquals(28, app.items[0].quality);
     }
 
+    @Test
+    void redWine_update_qualityDropsThreeTimesSlowerThanNormalItems() {
+        String name = "Red Wine";
+        int sellInDays = 7;
+        int quality = 32;
+        Item[] items = new Item[] { new Item(name, sellInDays, quality) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+        app.updateQuality();
+        app.updateQuality();
+
+        assertEquals(31, app.items[0].quality);
+    }
+
+    @Test
+    void redWine_update_qualityDropsThreeTimesSlowerThanNormalItemsWhenSellInIsPassed0() {
+        String name = "Red Wine";
+        int sellInDays = 0;
+        int quality = 32;
+        Item[] items = new Item[] { new Item(name, sellInDays, quality) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+        app.updateQuality();
+        app.updateQuality();
+
+        assertEquals(30, app.items[0].quality);
+    }
 
 }

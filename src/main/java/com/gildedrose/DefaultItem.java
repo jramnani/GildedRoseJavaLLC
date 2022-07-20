@@ -1,28 +1,32 @@
 package com.gildedrose;
 
-public class DefaultItem {
+public class DefaultItem implements Ageable {
 
-    protected int qualityDegradation;
+    private final Item item;
+    private final int minQuality;
+    protected int qualityCoefficient;
 
-    public DefaultItem() {
-        this.qualityDegradation = 1;
+    public DefaultItem(Item item) {
+        this.item = item;
+        this.qualityCoefficient = 1;
+        this.minQuality = 0;
     }
 
-    public void age(Item item) {
-        item.quality = updateQuality(item.quality, item.sellIn);
-        item.sellIn = updateSellIn(item.sellIn);
+    public void age() {
+        item.quality = updateQuality();
+        item.sellIn = updateSellIn();
     }
 
-    private int updateQuality(int quality, int sellIn) {
-        if (sellIn <= 0) {
-            this.qualityDegradation = 2;
+    private int updateQuality() {
+        if (item.sellIn <= 0) {
+            this.qualityCoefficient = 2;
         }
-        quality -= this.qualityDegradation;
-        return Math.max(quality, 0);
+        item.quality -= this.qualityCoefficient;
+        return Math.max(item.quality, minQuality);
     }
 
-    private int updateSellIn(int sellIn) {
-        return sellIn - 1;
+    protected int updateSellIn() {
+        return item.sellIn - 1;
     }
 
 }
