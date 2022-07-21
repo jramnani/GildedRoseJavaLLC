@@ -1,5 +1,6 @@
 package com.gildedrose;
 
+import com.gildedrose.goblins_grotto.Item;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -1,0 +1,3 @@
+[submodule "waiter"]
+	path = waiter
+	url = https://github.com/ikarabulut/waiter.git

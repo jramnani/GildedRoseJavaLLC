@@ -1,4 +1,4 @@
-package com.gildedrose;
+package com.gildedrose.goblins_grotto;
 
 public class Item {
 
