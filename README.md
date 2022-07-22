@@ -13,7 +13,15 @@ Welcome to the Gilded Rose Inventory System, this system currently keeps track o
 - Regarding installation: we used [Homebrew](https://docs.brew.sh/Installation)
   - You can also install gradle and java locally using homebrew once installed by running
   - `brew install java` `brew install gradle`
-## To run tests locally
+## To install the app locally
 1. `git clone git@github.com:jramnani/GildedRoseJavaLLC.git`
 2. `cd GildedRoseJavaLLC`
-3. `gradle test`
+3. `git submodule init`
+4. `git submodule update`
+
+## To run the app
+1. `gradle run`
+2. To exit the running app enter `ctrl-c` on your command line
+
+## To run tests locally
+1. `gradle test`
