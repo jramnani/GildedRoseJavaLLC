@@ -21,6 +21,8 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
+      - name: Update submodule
+        run: git submodule init && git submodule update
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
         with:
