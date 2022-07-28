@@ -18,6 +18,14 @@ public class BackstagePass implements Ageable {
         item.sellIn = updateSellIn();
     }
 
+    public String getName() {
+        return this.item.name;
+    }
+
+    public int getPrice() {
+        return this.item.quality;
+    }
+
     private int updateQuality() {
         if (item.sellIn <= 10
                 && item.sellIn > 5) {

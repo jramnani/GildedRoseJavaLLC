@@ -19,6 +19,14 @@ public class DefaultItem implements Ageable {
         item.sellIn = updateSellIn();
     }
 
+    public String getName() {
+        return this.item.name;
+    }
+
+    public int getPrice() {
+        return this.item.quality;
+    }
+
     private int updateQuality() {
         if (item.sellIn <= 0) {
             this.qualityCoefficient = 2;

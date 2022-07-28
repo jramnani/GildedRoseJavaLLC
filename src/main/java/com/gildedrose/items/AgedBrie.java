@@ -14,6 +14,14 @@ public class AgedBrie implements Ageable {
         this.maxQuality = 50;
     }
 
+    public String getName() {
+        return this.item.name;
+    }
+
+    public int getPrice() {
+        return this.item.quality;
+    }
+
     public void age() {
         item.quality = updateQuality();
         item.sellIn = updateSellIn();

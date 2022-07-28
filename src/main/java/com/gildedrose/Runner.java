@@ -1,6 +1,8 @@
 package com.gildedrose;
 
 import com.gildedrose.goblins_grotto.Item;
+import com.gildedrose.items.Ageable;
+import com.gildedrose.items.MapRepository;
 import waiter.EchoServer;
 import waiter.RequestParser;
 import waiter.Router;
@@ -15,14 +17,16 @@ import waiter.Reportable.Communicator;
 import waiter.Threadable.ThreadGenerator;
 import waiter.Transportable.Messenger;
 
+import java.util.Map;
 import java.util.function.Function;
 
 public class Runner {
-
-    static GildedRose gildedRose;
+    static DataRepository mapRepository;
 
     public static void main(String[] args) {
         int port = 5000;
+        GildedRose gRose = constructInventory();
+        mapRepository = new MapRepository(gRose.getInventory());
         Listener listener = new Listener();
         Routes routes = constructRoutes();
         HttProtocol protocol = new HttProtocol(
@@ -37,6 +41,20 @@ public class Runner {
         echoServer.start(port);
     }
 
+    private static GildedRose constructInventory() {
+        Item[] items = new Item[] {
+                new Item("+5 Dexterity Vest", 10, 20), //
+                new Item("Aged Brie", 2, 0), //
+                new Item("Elixir of the Mongoose", 5, 7), //
+                new Item("Sulfuras, Hand of Ragnaros", 0, 80), //
+                new Item("Sulfuras, Hand of Ragnaros", -1, 80),
+                new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+                new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
+                new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),
+                new Item("Conjured", 3, 6) };
+
+        return new GildedRose(items);
+    }
     private static Routes constructRoutes() {
         Routes routes = new Routes();
 
@@ -59,7 +77,7 @@ public class Runner {
 
     private static final Function<Request, Response> okSingleItemHandler = request -> new ResponseBuilder()
             .newUp()
-            .body(getJsonFormattedBodyWithId(request))
+            .body(getJsonFormattedBodyWithId(request.getParameter()))
             .headers(Response.HeaderField.ContentType, "application/json")
             .build();
 
@@ -72,14 +90,14 @@ public class Runner {
                 """;
     }
 
-    private static String getJsonFormattedBodyWithId(Request request) {
+    private static String getJsonFormattedBodyWithId(String id) {
+        Ageable item = mapRepository.get(id);
         return String.format("""
                 {
-                    "id": "%s",
-                    "name": "hello world",
-                    "price": "hello world"
+                    "name": "%s",
+                    "price": "%d"
                 }
-                """, request.getParameter());
+                """, item.getName(), item.getPrice());
     }
 
 }
