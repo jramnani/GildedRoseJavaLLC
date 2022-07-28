@@ -1,5 +1,6 @@
 package com.gildedrose;
 
+import com.gildedrose.goblins_grotto.Item;
 import waiter.EchoServer;
 import waiter.RequestParser;
 import waiter.Router;
@@ -17,6 +18,8 @@ import waiter.Transportable.Messenger;
 import java.util.function.Function;
 
 public class Runner {
+
+    static GildedRose gildedRose;
 
     public static void main(String[] args) {
         int port = 5000;
@@ -38,25 +41,45 @@ public class Runner {
         Routes routes = new Routes();
 
         routes.addRoute(
-                new Route("/inventory", new Request.Method[]{Request.Method.GET}, okInventoryHandler)
+                new Route("/inventory", new Request.Method[]{Request.Method.GET}, okAllItemsHandler)
+        );
+
+        routes.addRoute(
+                new Route("/inventory/:id", new Request.Method[]{Request.Method.GET}, okSingleItemHandler)
         );
 
         return routes;
     }
 
-    private static final Function<Request, Response> okInventoryHandler = request -> new ResponseBuilder()
-                .newUp()
-                .body(getJsonFormattedBody())
-                .headers(Response.HeaderField.ContentType, "application/json")
-                .build();
+    private static final Function<Request, Response> okAllItemsHandler = request -> new ResponseBuilder()
+            .newUp()
+            .body(getJsonFormattedBody())
+            .headers(Response.HeaderField.ContentType, "application/json")
+            .build();
+
+    private static final Function<Request, Response> okSingleItemHandler = request -> new ResponseBuilder()
+            .newUp()
+            .body(getJsonFormattedBodyWithId(request))
+            .headers(Response.HeaderField.ContentType, "application/json")
+            .build();
 
     private static String getJsonFormattedBody() {
         return """
                 {
-                    'name': 'hello world',
-                    'price': 'hello world'
+                    "name": "hello world",
+                    "price": "hello world"
                 }
                 """;
+    }
+
+    private static String getJsonFormattedBodyWithId(Request request) {
+        return String.format("""
+                {
+                    "id": "%s",
+                    "name": "hello world",
+                    "price": "hello world"
+                }
+                """, request.getParameter());
     }
 
 }
