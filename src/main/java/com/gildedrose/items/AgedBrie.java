@@ -7,19 +7,22 @@ public class AgedBrie implements Ageable {
     private final Item item;
     private final int maxQuality;
 
+    private final float markUp;
+
 
     public AgedBrie(Item item) {
         this.item = item;
         this.qualityCoefficient = 1;
         this.maxQuality = 50;
+        this.markUp = 1.3f;
     }
 
     public String getName() {
         return this.item.name;
     }
 
-    public int getPrice() {
-        return this.item.quality;
+    public float getPrice() {
+        return this.item.quality * markUp;
     }
 
     public void age() {

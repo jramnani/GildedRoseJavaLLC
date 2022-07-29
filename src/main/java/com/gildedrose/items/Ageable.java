@@ -6,5 +6,5 @@ public interface Ageable {
 
     String getName();
 
-    int getPrice();
+    float getPrice();
 }

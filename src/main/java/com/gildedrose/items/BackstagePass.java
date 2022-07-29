@@ -6,11 +6,13 @@ public class BackstagePass implements Ageable {
     private final int maxQuality;
     private int qualityCoefficient;
     private final Item item;
+    private final float markUp;
 
     public BackstagePass(Item item) {
         this.item = item;
         this.qualityCoefficient = 1;
         this.maxQuality = 50;
+        this.markUp = 1.3f;
     }
 
     public void age() {
@@ -22,8 +24,8 @@ public class BackstagePass implements Ageable {
         return this.item.name;
     }
 
-    public int getPrice() {
-        return this.item.quality;
+    public float getPrice() {
+        return this.item.quality * markUp;
     }
 
     private int updateQuality() {

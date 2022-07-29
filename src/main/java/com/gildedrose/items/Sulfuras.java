@@ -5,9 +5,11 @@ import com.gildedrose.goblins_grotto.Item;
 public class Sulfuras implements Ageable {
 
     private final Item item;
+    private final float markUp;
 
     public Sulfuras(Item item) {
         this.item = item;
+        this.markUp = 1.3f;
     }
 
     public void age() {
@@ -18,8 +20,8 @@ public class Sulfuras implements Ageable {
         return this.item.name;
     }
 
-    public int getPrice() {
-        return this.item.quality;
+    public float getPrice() {
+        return this.item.quality * markUp;
     }
 
 }
