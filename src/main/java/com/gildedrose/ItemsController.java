@@ -1,5 +1,6 @@
 package com.gildedrose;
 
+import com.gildedrose.goblins_grotto.Item;
 import com.gildedrose.items.Ageable;
 import waiter.Request;
 import waiter.Response;
@@ -7,12 +8,12 @@ import waiter.ResponseBuilder;
 
 import java.util.function.Function;
 
-public class AgeableController {
+public class ItemsController {
 
-    private final DataRepository ageableRepository;
+    private final DataRepository itemsRepository;
 
-    public AgeableController() {
-        this.ageableRepository = new AgeableRepository();
+    public ItemsController(Datasource<Item> hashMapDB) {
+        this.itemsRepository = new ItemsRepository(hashMapDB);
     }
 
     final Function<Request, Response> okAllItemsHandler = request -> new ResponseBuilder()
@@ -37,7 +38,7 @@ public class AgeableController {
     }
 
     private String getJsonFormattedBodyWithId(String id) {
-        Ageable item = ageableRepository.get(id);
+        Ageable item = itemsRepository.get(id);
         return String.format("""
                 {
                     "name": "%s",
