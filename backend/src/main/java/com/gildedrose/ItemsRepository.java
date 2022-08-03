@@ -1,6 +1,5 @@
 package com.gildedrose;
 
-import com.gildedrose.goblins_grotto.Item;
 import com.gildedrose.items.*;
 
 import java.util.*;
