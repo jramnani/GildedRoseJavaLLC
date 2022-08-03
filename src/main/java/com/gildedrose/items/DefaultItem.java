@@ -29,6 +29,14 @@ public class DefaultItem implements Ageable {
         return this.item.quality * markUp;
     }
 
+    public int getQuality() {
+        return item.quality;
+    }
+
+    public int getSellIn() {
+        return item.sellIn;
+    }
+
     private int updateQuality() {
         if (item.sellIn <= 0) {
             this.qualityCoefficient = 2;

@@ -7,4 +7,8 @@ public interface Ageable {
     String getName();
 
     float getPrice();
+
+    int getQuality();
+
+    int getSellIn();
 }

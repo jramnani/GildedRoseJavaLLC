@@ -1,6 +1,7 @@
 package com.gildedrose;
 
 import com.gildedrose.goblins_grotto.Item;
+import com.gildedrose.items.*;
 import waiter.EchoServer;
 import waiter.RequestParser;
 import waiter.Router;
@@ -52,8 +53,8 @@ public class Runner {
 
 
     //Only here for the inlined DB (Hashmap)
-    private static HashMap<String, Item> populateHashMapDB() {
-        HashMap<String, Item> hashMapDB = new HashMap<>();
+    private static HashMap<String, Ageable> populateHashMapDB() {
+        HashMap<String, Ageable> hashMapDB = new HashMap<>();
         int id = 0;
         Item[] items = new Item[] {
                 new Item("+5 Dexterity Vest", 10, 20), //
@@ -67,7 +68,15 @@ public class Runner {
                 new Item("Conjured", 3, 6) };
 
         for (Item item : items) {
-            hashMapDB.put(String.valueOf(id++), item);
+            String passedId = String.valueOf(id++);
+            switch (item.name) {
+                case "Aged Brie" -> hashMapDB.put(passedId, new AgedBrie(item));
+                case "Backstage passes to a TAFKAL80ETC concert" -> hashMapDB.put(passedId, new BackstagePass(item));
+                case "Sulfuras, Hand of Ragnaros" -> hashMapDB.put(passedId, new Sulfuras(item));
+                case "Conjured" -> hashMapDB.put(passedId, new Conjured(item));
+                case "Red Wine" -> hashMapDB.put(passedId, new RedWine(item));
+                default -> hashMapDB.put(passedId, new DefaultItem(item));
+            }
         }
 
         return hashMapDB;

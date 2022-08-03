@@ -25,6 +25,14 @@ public class AgedBrie implements Ageable {
         return this.item.quality * markUp;
     }
 
+    public int getQuality() {
+        return item.quality;
+    }
+
+    public int getSellIn() {
+        return item.sellIn;
+    }
+
     public void age() {
         item.quality = updateQuality();
         item.sellIn = updateSellIn();

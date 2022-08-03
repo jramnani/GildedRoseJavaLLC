@@ -12,7 +12,7 @@ public class ItemsController {
 
     private final DataRepository itemsRepository;
 
-    public ItemsController(Datasource<Item> hashMapDB) {
+    public ItemsController(Datasource<Ageable> hashMapDB) {
         this.itemsRepository = new ItemsRepository(hashMapDB);
     }
 
