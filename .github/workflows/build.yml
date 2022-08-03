@@ -24,10 +24,10 @@ jobs:
         working-directory: ./backend
         run: git submodule init && git submodule update
       - name: Setup Gradle
-        working-directory: ./backend
         uses: gradle/gradle-build-action@v2
         with:
           gradle-version: current
+          working-directory: ./backend
       - name: Execute Gradle build
         working-directory: ./backend
         run: gradle assemble
