@@ -14,7 +14,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'com.gildedrose.Runner'
+    mainClass = 'com.gildedrose.GildedRose'
 }
 
 sourceSets {
