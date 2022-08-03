@@ -11,6 +11,7 @@ import waiter.Response;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ItemsControllerTest {
 
@@ -21,8 +22,7 @@ public class ItemsControllerTest {
     void setUp() {
         mockedDB = new ArrayList<>();
         itemsController = new ItemsController(new ItemsDataSourceMock<>(mockedDB));
-        mockedDB.add(new DefaultItem(new Item("foo", 3, 14)));
-
+        mockedDB.add(new DefaultItem(new Item("FlavorTown", 3, 14)));
     }
 
     @Test
@@ -33,6 +33,7 @@ public class ItemsControllerTest {
         Response response = itemsController.okSingleItemHandler.apply(request);
 
         assertEquals(Response.Status.OK, response.getStatus());
+        assertTrue(response.getBody().contains("FlavorTown"));
     }
 
     @Test
@@ -42,6 +43,7 @@ public class ItemsControllerTest {
         Response response = itemsController.okAllItemsHandler.apply(request);
 
         assertEquals(Response.Status.OK, response.getStatus());
+        assertTrue(response.getBody().contains("FlavorTown"));
     }
 
     @Test
@@ -50,8 +52,6 @@ public class ItemsControllerTest {
         request.setParameter("2");
 
         Response response = itemsController.okSingleItemHandler.apply(request);
-
-        System.out.println(response.getBody());
 
         assertEquals(Response.Status.NotFound, response.getStatus());
     }
