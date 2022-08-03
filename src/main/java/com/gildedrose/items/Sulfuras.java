@@ -14,4 +14,20 @@ public class Sulfuras implements Ageable {
         item.quality = 80;
     }
 
+    public String getName() {
+        return this.item.name;
+    }
+
+    public float getPrice() {
+        return this.item.quality * markUp;
+    }
+
+    public int getQuality() {
+        return item.quality;
+    }
+
+    public int getSellIn() {
+        return item.sellIn;
+    }
+
 }
