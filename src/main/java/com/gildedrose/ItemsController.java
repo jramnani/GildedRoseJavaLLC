@@ -30,11 +30,22 @@ public class ItemsController {
 
     final Function<Request, Response> okSingleItemHandler = request -> {
         Ageable item = itemsRepository.get(request.getParameter());
+        if(itemNotFound(item)) {
+            return new ResponseBuilder()
+                    .newUp()
+                    .status(Response.Status.NotFound)
+                    .body("404, item was not found")
+                    .build();
+        }
         return new ResponseBuilder()
                 .newUp()
                 .body(itemsPresenter.singleItemJson(item))
                 .headers(Response.HeaderField.ContentType, "application/json")
                 .build();
     };
+
+    private boolean itemNotFound(Ageable item) {
+        return item == null;
+    }
 
 }

@@ -11,7 +11,12 @@ public class ItemsDataSourceMock<T> implements Datasource<T> {
     }
 
     public T get(String id) {
-        return mockedDB.get(Integer.parseInt(id) - 1);
+        if(Integer.parseInt(id) > mockedDB.size()) {
+            return null;
+        }
+        else {
+            return mockedDB.get(Integer.parseInt(id) - 1);
+        }
     }
 
     public Collection<T> getAll() {
