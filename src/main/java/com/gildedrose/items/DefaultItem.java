@@ -7,13 +7,11 @@ public class DefaultItem implements Ageable {
     private final Item item;
     private final int minQuality;
     protected int qualityCoefficient;
-    private final float markUp;
 
     public DefaultItem(Item item) {
         this.item = item;
         this.qualityCoefficient = 1;
         this.minQuality = 0;
-        this.markUp = 1.3f;
     }
 
     public void age() {
