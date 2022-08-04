@@ -20,19 +20,16 @@ cd GildedRoseJavaLLC
 cd gilded-rose-llc-frontend
 ```
 
-Install dependencies
+Install dependencies (We used yarn, feel free to use either npm or yarn, to use npm just enter the npm commands related to the ones below)
 
 ```
 yarn install
-# or
-npm install
+
 ```
 
 Run the development server:
 
 ```
-npm run dev
-# or
 yarn dev
 ```
 
@@ -46,6 +43,5 @@ To run the tests:
 
 ```
 yarn test
-# or
-npm test
+
 ```
