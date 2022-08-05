@@ -46,7 +46,7 @@ const Home: NextPage<HomeProps> = ({ items }) => {
 
   return (
     <div className="bg-[#222C40] min-h-screen text-white">
-      <h1>GILDED ROSE RULEZ</h1>
+      <h1>Gilded Rose</h1>
       <ul>
         {/* TODO: Will replace the index below with an id located in the items array */}
         {items.map((item, index) => (
