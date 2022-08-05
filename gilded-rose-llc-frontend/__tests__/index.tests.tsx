@@ -2,9 +2,11 @@ import { render, screen } from "@testing-library/react";
 import Home from "../pages/index";
 
 describe("Home", () => {
-  it("should pass this test meaning that the testing framework is working", () => {
-    render(<Home />);
+  it("should render a heading of Gilded Rose", () => {
+    render(<Home items={[]}/>);
+    const expectedHeading = "Gilded Rose"
 
-    screen.debug();
+    const heading = (screen.getByRole('heading', {name: /Bubba gump shrimp/i}))
+    expect(heading).toBeInTheDocument();
   });
 });
