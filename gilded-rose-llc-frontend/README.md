@@ -9,6 +9,7 @@ This project is built using Next.js, Typescript, and Tailwind CSS.
 - [TailwindCSS](https://tailwindcss.com/docs/guides/nextjs)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 - [Jest](https://jestjs.io/docs/getting-started)
+- [Prettier](https://prettier.io/docs/en/options.html)
 
 ## Getting Started
 
