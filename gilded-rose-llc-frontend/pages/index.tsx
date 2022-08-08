@@ -1,9 +1,9 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import { useEffect } from "react";
-import { GetServerSideProps } from "next";
+import type { NextPage } from 'next'
+import Head from 'next/head'
+import { useEffect } from 'react'
+import { GetServerSideProps } from 'next'
 
-const ItemBlock = (props: ItemBlockProps) => {
+const ItemBlock = (props: Item) => {
   return (
     <li className="bg-[#8690F4] my-2">
       <h2>{props.name}</h2>
@@ -14,27 +14,22 @@ const ItemBlock = (props: ItemBlockProps) => {
 }
 
 const getRequest = async () => {
-  const url = "http://localhost:5000/inventory";
+  const url = 'http://localhost:5000/inventory'
   const response = await fetch(url, {
-    method: "GET",
-    mode: "no-cors",
-  });
-  return response;
-};
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await getRequest();
-  const items = await res.json();
-  return { props: { items } };
-};
-
-interface HomeProps {
-  items: Item[];
+    method: 'GET',
+    mode: 'no-cors',
+  })
+  return response
 }
 
-interface ItemBlockProps {
-  name: string
-  price: string
+export const getServerSideProps: GetServerSideProps = async () => {
+  const res = await getRequest()
+  const items = await res.json()
+  return { props: { items } }
+}
+
+interface HomeProps {
+  items: Item[]
 }
 
 interface Item {
@@ -43,7 +38,6 @@ interface Item {
 }
 
 const Home: NextPage<HomeProps> = ({ items }) => {
-
   return (
     <div className="bg-[#222C40] min-h-screen text-white">
       <h1>Gilded Rose</h1>
