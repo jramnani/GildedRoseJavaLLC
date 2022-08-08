@@ -28,7 +28,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return { props: { items } }
 }
 
-interface HomeProps {
+interface Items {
   items: Item[]
 }
 
@@ -37,7 +37,7 @@ interface Item {
   price: string
 }
 
-const Home: NextPage<HomeProps> = ({ items }) => {
+const Home: NextPage<Items> = ({ items }) => {
   return (
     <div className="bg-[#222C40] min-h-screen text-white">
       <h1>Gilded Rose</h1>
