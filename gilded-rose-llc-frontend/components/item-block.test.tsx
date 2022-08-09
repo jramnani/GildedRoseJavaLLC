@@ -24,4 +24,15 @@ describe('ItemBlock', () => {
 
     expect(price).toBeInTheDocument()
   })
+
+  it('Should display an Add to Cart button', () => {
+    const item = {
+      name: 'aged brie',
+      price: '50',
+    }
+    render(<ItemBlock name={item.name} price={item.price} />)
+    const addToCartButton = screen.getByRole('button', { name: /add to cart/i })
+
+    expect(addToCartButton).toBeInTheDocument()
+  })
 })
