@@ -1,5 +1,5 @@
 import { Item } from 'core/item'
 
-export interface FetchGateway {
+export interface ItemGateway {
   getAllItems(): Promise<Item[]>
 }
