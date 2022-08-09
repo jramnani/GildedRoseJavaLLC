@@ -10,23 +10,6 @@ describe('Home', () => {
     expect(heading).toBeInTheDocument()
   })
 
-  it('should render all of the items on the page', () => {
-    const items = [
-      {
-        name: 'aged brie',
-        price: '100',
-      },
-      {
-        name: 'conjured',
-        price: '50',
-      },
-    ]
-    render(<Home items={items} />)
-    const renderedItems = screen.getAllByRole('listitem')
-
-    expect(renderedItems.length).toEqual(items.length)
-  })
-
   it('should render the name and price of each item on the page', () => {
     const items = [
       {
