@@ -1,29 +1,17 @@
 import type { NextPage } from 'next'
 import { GetServerSideProps } from 'next'
 import ItemBlock from 'components/item-block'
-
-const getRequest = async () => {
-  const url = 'http://localhost:5000/inventory'
-  const response = await fetch(url, {
-    method: 'GET',
-    mode: 'no-cors',
-  })
-  return response
-}
+import { Item } from 'core/item'
+import * as api from 'core/client'
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await getRequest()
-  const items = await res.json()
+  const gateway = new api.ApiClient(window.fetch)
+  const items = gateway.getAllItems()
   return { props: { items } }
 }
 
 interface HomeProps {
   items: Item[]
-}
-
-interface Item {
-  name: string
-  price: string
 }
 
 const Home: NextPage<HomeProps> = ({ items }) => {
