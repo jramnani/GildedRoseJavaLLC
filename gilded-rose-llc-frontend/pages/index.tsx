@@ -1,15 +1,6 @@
 import type { NextPage } from 'next'
 import { GetServerSideProps } from 'next'
-
-const ItemBlock = (props: Item) => {
-  return (
-    <li className="bg-[#8690F4] my-2">
-      <h2>{props.name}</h2>
-      <h3>{props.price}</h3>
-      <button>add to cart</button>
-    </li>
-  )
-}
+import ItemBlock from 'components/item-block'
 
 const getRequest = async () => {
   const url = 'http://localhost:5000/inventory'
@@ -26,7 +17,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return { props: { items } }
 }
 
-interface Items {
+interface HomeProps {
   items: Item[]
 }
 
@@ -35,7 +26,7 @@ interface Item {
   price: string
 }
 
-const Home: NextPage<Items> = ({ items }) => {
+const Home: NextPage<HomeProps> = ({ items }) => {
   return (
     <div className="bg-[#222C40] min-h-screen text-white">
       <h1>Gilded Rose</h1>
