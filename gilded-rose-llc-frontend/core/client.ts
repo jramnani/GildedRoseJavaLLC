@@ -1,9 +1,9 @@
 import { Item } from 'core/item'
 import { FetchGateway } from './gateway'
 
-const getAllItems = async (fetch: typeof window.fetch): Promise<Item[]> => {
+const getAllItems = async (fetchMethod: typeof fetch): Promise<Item[]> => {
   const url = 'http://localhost:5000/inventory'
-  const response = await fetch(url, {
+  const response = await fetchMethod(url, {
     method: 'GET',
     mode: 'no-cors',
   })
@@ -12,6 +12,6 @@ const getAllItems = async (fetch: typeof window.fetch): Promise<Item[]> => {
 }
 
 export class ApiClient implements FetchGateway {
-  public constructor(private fetch: typeof window.fetch) {}
-  getAllItems = () => getAllItems(this.fetch)
+  public constructor(private fetchMethod: typeof fetch) {}
+  getAllItems = () => getAllItems(this.fetchMethod)
 }

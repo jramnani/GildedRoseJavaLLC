@@ -5,8 +5,8 @@ import { Item } from 'core/item'
 import * as api from 'core/client'
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const gateway = new api.ApiClient(window.fetch)
-  const items = gateway.getAllItems()
+  const gateway = new api.ApiClient(fetch)
+  const items = await gateway.getAllItems()
   return { props: { items } }
 }
 
