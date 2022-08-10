@@ -1,20 +1,35 @@
 import type { NextPage } from 'next'
-import { GetServerSideProps } from 'next'
+// import { GetServerSideProps } from 'next'
 import ItemBlock from 'components/item-block'
-import { Item } from 'core/item'
-import * as api from 'core/client'
+// import * as api from 'core/client'
+import { useClient } from 'core/api'
+import { useEffect, useState } from 'react'
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const gateway = new api.ApiClient(fetch)
-  const items = await gateway.getAllItems()
-  return { props: { items } }
-}
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   const gateway = new api.ApiClient(fetch)
+//   const items = await gateway.getAllItems()
+//   return { props: { items } }
+// }
 
-interface HomeProps {
-  items: Item[]
-}
+const Home: NextPage = () => {
+  const [items, setItems] = useState([])
+  const [isLoading, setLoading] = useState(false)
+  const client = useClient()
 
-const Home: NextPage<HomeProps> = ({ items }) => {
+  useEffect(() => {
+    setLoading(true)
+    client
+      .getAllItems()
+      .then((res) => res.json())
+      .then((data) => {
+        setItems(data)
+        setLoading(false)
+      })
+  }, [client])
+
+  if (isLoading) return <p>Loading...</p>
+  if (!items) return <p>No Inventory Data</p>
+
   return (
     <div className="bg-[#222C40] min-h-screen text-white">
       <h1>Gilded Rose</h1>

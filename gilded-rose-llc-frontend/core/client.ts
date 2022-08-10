@@ -1,14 +1,13 @@
-import { Item } from 'core/item'
+// import { Item } from 'core/item'
 import { ItemGateway } from './gateway'
 
-const getAllItems = async (fetchMethod: typeof fetch): Promise<Item[]> => {
+const getAllItems = (fetchMethod: typeof fetch): Promise<Response> => {
   const url = 'http://localhost:5000/inventory'
-  const response = await fetchMethod(url, {
+  const response = fetchMethod(url, {
     method: 'GET',
     mode: 'no-cors',
   })
-  const items = await response.json()
-  return items
+  return response
 }
 
 export class ApiClient implements ItemGateway {

@@ -1,8 +1,15 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
+import { ApiProvider, createClient } from 'core/api'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  const client = createClient()
+
+  return (
+    <ApiProvider client={client}>
+      <Component {...pageProps} />
+    </ApiProvider>
+  )
 }
 
 export default MyApp
