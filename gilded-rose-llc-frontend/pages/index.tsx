@@ -17,12 +17,14 @@ interface HomeProps {
 const Home: NextPage<HomeProps> = ({ items }) => {
   return (
     <div className="bg-[#222C40] min-h-screen text-white">
-      <h1>Gilded Rose</h1>
-      <ul>
-        {items.map((item, index) => (
-          <ItemBlock key={index} name={item.name} price={item.price} />
-        ))}
-      </ul>
+      <h1 className="text-[40px] font-roboto">Gilded Rose</h1>
+      <div>
+        <div className="grid grid-cols-3">
+          {items.map((item, index) => (
+            <ItemBlock key={index} name={item.name} price={item.price} />
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
