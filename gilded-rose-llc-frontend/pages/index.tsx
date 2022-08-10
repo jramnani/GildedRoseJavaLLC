@@ -19,7 +19,6 @@ const Home: NextPage<HomeProps> = ({ items }) => {
     <div className="bg-[#222C40] min-h-screen text-white">
       <h1>Gilded Rose</h1>
       <ul>
-        {/* TODO: Will replace the index below with an id located in the items array */}
         {items.map((item, index) => (
           <ItemBlock key={index} name={item.name} price={item.price} />
         ))}
