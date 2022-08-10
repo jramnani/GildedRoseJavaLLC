@@ -1,10 +1,31 @@
-import { render, screen } from "@testing-library/react";
-import Home from "../pages/index";
+import { render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom'
+import Home from '../pages/index'
 
-describe("Home", () => {
-  it("should pass this test meaning that the testing framework is working", () => {
-    render(<Home />);
+describe('Home', () => {
+  it('should render a heading of Gilded Rose', () => {
+    render(<Home items={[]} />)
 
-    screen.debug();
-  });
-});
+    const heading = screen.getByRole('heading', { name: /Gilded Rose/i })
+    expect(heading).toBeInTheDocument()
+  })
+
+  it('should render the name and price of each item on the page', () => {
+    const items = [
+      {
+        name: 'aged brie',
+        price: '100',
+      },
+      {
+        name: 'conjured',
+        price: '50',
+      },
+    ]
+    render(<Home items={items} />)
+
+    items.forEach((item) => {
+      expect(screen.getByText(item.name)).toBeInTheDocument()
+      expect(screen.getByText(item.price)).toBeInTheDocument()
+    })
+  })
+})

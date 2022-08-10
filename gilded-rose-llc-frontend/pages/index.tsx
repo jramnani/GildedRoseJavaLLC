@@ -1,42 +1,27 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
+import { GetServerSideProps } from 'next'
+import ItemBlock from 'components/item-block'
+import { Item } from 'core/item'
+import * as api from 'core/client'
 
-interface ItemBlockProps {
-  name: string
-  price: string
+export const getServerSideProps: GetServerSideProps = async () => {
+  const gateway = new api.ApiClient(fetch)
+  const items = await gateway.getAllItems()
+  return { props: { items } }
 }
 
-const ItemBlock = (props: ItemBlockProps) => {
-  return (
-    <li className="bg-[#8690F4] my-2">
-      <h2>{props.name}</h2>
-      <h3>{props.price}</h3>
-      <button>add to cart</button>
-    </li>
-  )
+interface HomeProps {
+  items: Item[]
 }
 
-const Home: NextPage = () => {
-  const items = [
-    {
-      name: 'Item Name',
-      price: '$10000000.00',
-    },
-    {
-      name: 'Another Name',
-      price: '$2000000.00',
-    },
-    {
-      name: 'My Bank Account',
-      price: '$0.01',
-    },
-  ]
+const Home: NextPage<HomeProps> = ({ items }) => {
   return (
     <div className="bg-[#222C40] min-h-screen text-white">
-      <h1>GILDED ROSE RULEZ</h1>
+      <h1>Gilded Rose</h1>
       <ul>
-        {items.map((item) => (
-          <ItemBlock key={item.name} name={item.name} price={item.price} />
+        {/* TODO: Will replace the index below with an id located in the items array */}
+        {items.map((item, index) => (
+          <ItemBlock key={index} name={item.name} price={item.price} />
         ))}
       </ul>
     </div>
