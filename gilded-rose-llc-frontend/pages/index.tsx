@@ -4,6 +4,7 @@ import ItemBlock from 'components/item-block'
 // import * as api from 'core/client'
 import { useClient } from 'core/api'
 import { useEffect, useState } from 'react'
+import { Item } from 'core/item'
 
 // export const getServerSideProps: GetServerSideProps = async () => {
 //   const gateway = new api.ApiClient(fetch)
@@ -12,23 +13,12 @@ import { useEffect, useState } from 'react'
 // }
 
 const Home: NextPage = () => {
-  const [items, setItems] = useState([])
-  const [isLoading, setLoading] = useState(false)
+  const [items, setItems] = useState<Item[]>([])
   const client = useClient()
 
   useEffect(() => {
-    setLoading(true)
-    client
-      .getAllItems()
-      .then((res) => res.json())
-      .then((data) => {
-        setItems(data)
-        setLoading(false)
-      })
+    client.getAllItems().then((items) => setItems(items))
   }, [client])
-
-  if (isLoading) return <p>Loading...</p>
-  if (!items) return <p>No Inventory Data</p>
 
   return (
     <div className="bg-[#222C40] min-h-screen text-white">

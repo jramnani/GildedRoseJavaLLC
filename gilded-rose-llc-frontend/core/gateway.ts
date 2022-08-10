@@ -1,5 +1,5 @@
-// import { Item } from 'core/item'
+import { Item } from 'core/item'
 
 export interface ItemGateway {
-  getAllItems(): Promise<Response>
+  getAllItems(): Promise<Item[]>
 }
