@@ -12,9 +12,11 @@ public class ItemsPresenter {
                 {
                     "id": "%s",
                     "name": "%s",
+                    "quality": "%s",
+                    "sellIn": "%s",
                     "price": "%f"
                 }
-                """, item.getId(), item.getName(), item.getPrice());
+                """, item.getId(), item.getName(), item.getQuality(), item.getSellIn(), item.getPrice());
     }
 
     public String allItemsJson(Collection<Ageable> items) {
@@ -24,9 +26,11 @@ public class ItemsPresenter {
                 {
                     "id": "%s",
                     "name": "%s",
+                    "quality": "%s",
+                    "sellIn": "%s",
                     "price": "%f"
                 },
-                """, item.getId(), item.getName(), item.getPrice()));
+                """, item.getId(), item.getName(),item.getQuality(), item.getSellIn(), item.getPrice()));
         }
 
         return formatJsonBrackets(allItemsJson);

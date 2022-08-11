@@ -29,10 +29,11 @@ public class ItemsPresenterTest {
                 {
                     "id": "%s",
                     "name": "%s",
+                    "quality": "%s",
+                    "sellIn": "%s",
                     "price": "%f"
                 }
-                ""","1", name, price);
-
+                ""","1", name, quality, sellIn, price);
         assertEquals(expectedSingleItemJson, singleItemJson);
     }
 
@@ -57,14 +58,18 @@ public class ItemsPresenterTest {
                 [{
                     "id": "%s",
                     "name": "%s",
+                    "quality": "%s",
+                    "sellIn": "%s",
                     "price": "%f"
                 },
                 {
                     "id": "%s",
                     "name": "%s",
+                    "quality": "%s",
+                    "sellIn": "%s",
                     "price": "%f"
                 }]
-                """, "1", "FlavorTown", price, "2", "Aged Brie", price);
+                """, "1", "FlavorTown",quality, sellIn, price, "2", "Aged Brie", quality, sellIn, price);
 
         assertEquals(expectedItemsJson, allItemsJson);
     }
