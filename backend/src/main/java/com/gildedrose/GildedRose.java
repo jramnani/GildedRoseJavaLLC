@@ -48,6 +48,10 @@ public class GildedRose {
                 new Route("/inventory/:id", new Request.Method[]{Request.Method.GET}, itemsController.okSingleItemHandler)
         );
 
+        routes.addRoute(
+                new Route("/inventory/update", new Request.Method[]{Request.Method.POST}, itemsController.okAllItemsUpdateHandler)
+        );
+
         return routes;
     }
 

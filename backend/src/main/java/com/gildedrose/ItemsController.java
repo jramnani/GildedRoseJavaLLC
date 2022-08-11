@@ -43,6 +43,16 @@ public class ItemsController {
                 .build();
     };
 
+    final Function<Request, Response> okAllItemsUpdateHandler = request -> {
+        itemsRepository.updateAll();
+        Collection<Ageable> items = itemsRepository.getAll();
+        return new ResponseBuilder()
+                .newUp()
+                .body(itemsPresenter.allItemsJson(items))
+                .headers(Response.HeaderField.ContentType, "application/json")
+                .build();
+    };
+
     private boolean itemNotFound(Ageable item) {
         return item == null;
     }
