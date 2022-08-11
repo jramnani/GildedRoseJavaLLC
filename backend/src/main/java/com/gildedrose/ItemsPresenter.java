@@ -14,7 +14,7 @@ public class ItemsPresenter {
                     "name": "%s",
                     "quality": "%s",
                     "sellIn": "%s",
-                    "price": "%f"
+                    "price": "%.2f"
                 }
                 """, item.getId(), item.getName(), item.getQuality(), item.getSellIn(), item.getPrice());
     }
@@ -28,7 +28,7 @@ public class ItemsPresenter {
                     "name": "%s",
                     "quality": "%s",
                     "sellIn": "%s",
-                    "price": "%f"
+                    "price": "%.2f"
                 },
                 """, item.getId(), item.getName(),item.getQuality(), item.getSellIn(), item.getPrice()));
         }

@@ -31,7 +31,7 @@ public class ItemsPresenterTest {
                     "name": "%s",
                     "quality": "%s",
                     "sellIn": "%s",
-                    "price": "%f"
+                    "price": "%.2f"
                 }
                 ""","1", name, quality, sellIn, price);
         assertEquals(expectedSingleItemJson, singleItemJson);
@@ -60,14 +60,14 @@ public class ItemsPresenterTest {
                     "name": "%s",
                     "quality": "%s",
                     "sellIn": "%s",
-                    "price": "%f"
+                    "price": "%.2f"
                 },
                 {
                     "id": "%s",
                     "name": "%s",
                     "quality": "%s",
                     "sellIn": "%s",
-                    "price": "%f"
+                    "price": "%.2f"
                 }]
                 """, "1", "FlavorTown",quality, sellIn, price, "2", "Aged Brie", quality, sellIn, price);
 
