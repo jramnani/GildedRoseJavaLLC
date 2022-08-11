@@ -20,16 +20,18 @@ public class ItemsPresenterTest {
         String name = "FlavorTown";
         ItemsPresenter itemsPresenter = new ItemsPresenter();
         Ageable item = new DefaultItem(new Item(name, sellIn, quality));
+        item.setId("1");
         float price = quality * 1.3f;
 
         String singleItemJson = itemsPresenter.singleItemJson(item);
 
         String expectedSingleItemJson = String.format("""
                 {
+                    "id": "%s",
                     "name": "%s",
                     "price": "%f"
                 }
-                """, name, price);
+                ""","1", name, price);
 
         assertEquals(expectedSingleItemJson, singleItemJson);
     }
@@ -42,20 +44,27 @@ public class ItemsPresenterTest {
         Collection<Ageable> items = new ArrayList<>();
         items.add(new DefaultItem(new Item("FlavorTown", sellIn, quality)));
         items.add(new AgedBrie(new Item("Aged Brie", sellIn, quality)));
+        int id = 0;
+        for (Ageable item : items) {
+            id++;
+            item.setId(String.valueOf(id));
+        }
         float price = quality * 1.3f;
 
         String allItemsJson = itemsPresenter.allItemsJson(items);
 
         String expectedItemsJson = String.format("""
                 [{
+                    "id": "%s",
                     "name": "%s",
                     "price": "%f"
                 },
                 {
+                    "id": "%s",
                     "name": "%s",
                     "price": "%f"
                 }]
-                """, "FlavorTown", price, "Aged Brie", price);
+                """, "1", "FlavorTown", price, "2", "Aged Brie", price);
 
         assertEquals(expectedItemsJson, allItemsJson);
     }

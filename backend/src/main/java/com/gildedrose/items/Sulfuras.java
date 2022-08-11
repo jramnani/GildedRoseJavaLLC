@@ -5,6 +5,8 @@ import com.gildedrose.goblins_grotto.Item;
 public class Sulfuras implements Ageable {
 
     private final Item item;
+    private String id;
+
 
     public Sulfuras(Item item) {
         this.item = item;
@@ -28,6 +30,14 @@ public class Sulfuras implements Ageable {
 
     public int getSellIn() {
         return item.sellIn;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return this.id;
     }
 
 }
