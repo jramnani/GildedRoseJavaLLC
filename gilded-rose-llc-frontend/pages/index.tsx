@@ -16,14 +16,15 @@ interface HomeProps {
 
 const Home: NextPage<HomeProps> = ({ items }) => {
   return (
-    <div className="bg-[#222C40] min-h-screen text-white">
-      <h1 className="text-[40px] font-roboto">Gilded Rose</h1>
-      <div>
-        <div className="grid grid-cols-3">
+    <div className="bg-[#222C40] text-white w-full h-screen">
+      <div className="text-[40px] font-roboto w-screen">Gilded Rose</div>
+      <p className="w-screen">available items</p>
+      <div className=" w-screen">
+        <section className="grid grid-cols-3 gap-4">
           {items.map((item, index) => (
             <ItemBlock key={index} name={item.name} price={item.price} />
           ))}
-        </div>
+        </section>
       </div>
     </div>
   )
