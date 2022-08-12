@@ -24,7 +24,7 @@ const Home: NextPage<HomeProps> = ({ items }) => {
           <div className="h-20 w-24">
             <Image src={logo} alt="gilded rose logo" />
           </div>
-          <p className="pl-4">gilded rose</p>
+          <h1 className="pl-4">gilded rose</h1>
         </div>
         <p className="pt-8 pb-12 text-[32px] font-roboto font-[600]">
           available items
