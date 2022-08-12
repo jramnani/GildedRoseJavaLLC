@@ -9,34 +9,23 @@ jobs:
   build_with_lint_and_run_tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Begin linting
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+      - name: Begin job
+        uses: actions/checkout@v3
 
-      - name: Use Node 12
-        uses: actions/setup-node@v1
+      - name: Use Node 16
+        uses: actions/setup-node@v3
         with:
-          node-version: 12.x
-
-      - name: Use cached node_modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: nodeModules-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            nodeModules-
+          node-version: 16
+          cache: yarn
       
       - name: Install dependencies
+        working-directory: ./gilded-rose-llc-frontend
         run: yarn install --frozen-lockfile
 
       - name: Run ESLint
+        working-directory: ./gilded-rose-llc-frontend
         run: yarn lint
 
-      - name: Run stylelint
-        run: yarn stylelint
-        
       -name: Run Tests
-        run: yarn test
-
-
+        working-directory: ./gilded-rose-llc-frontend
+        run: yarn test --no-watch
