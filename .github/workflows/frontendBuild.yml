@@ -7,7 +7,7 @@ on:
     branches: [trunk]
 
 jobs:
-  lint_and_run_tests:
+  lint_build_and_run_tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,3 +30,7 @@ jobs:
       - name: Run Tests
         working-directory: ./gilded-rose-llc-frontend
         run: yarn test --no-watch
+
+      - name: Run Build
+        working-directory: ./gilded-rose-llc-frontend
+        run: yarn build
