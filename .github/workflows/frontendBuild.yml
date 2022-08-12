@@ -1,4 +1,4 @@
-name: Frontend Lint/Tests
+name: Frontend Lint and tests
 
 on:
   push:
