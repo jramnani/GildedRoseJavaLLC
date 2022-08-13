@@ -55,4 +55,16 @@ public class ItemsControllerTest {
 
         assertEquals(Response.Status.NotFound, response.getStatus());
     }
+
+    @Test
+    void okAllItemsUpdateHandler_ShouldAgeAllItemsInDB() {
+        Request request = new Request("/inventory/update", Request.Method.POST.asString, "foo", "foo", "foo");
+        Ageable item = mockedDB.get(0);
+
+        itemsController.okAllItemsUpdateHandler.apply(request);
+
+
+        assertEquals(13, item.getQuality());
+        assertEquals(2, item.getSellIn());
+    }
 }
