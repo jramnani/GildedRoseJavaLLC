@@ -11,6 +11,10 @@ This project is built using Next.js, Typescript, and Tailwind CSS.
 - [Jest](https://jestjs.io/docs/getting-started)
 - [Prettier](https://prettier.io/docs/en/options.html)
 
+## Requirements
+
+Node: Project built using Node 18. Build tested on 12/14/16/18
+
 ## Getting Started
 
 Clone the repo locally
