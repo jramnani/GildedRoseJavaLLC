@@ -60,11 +60,13 @@ public class ItemsControllerTest {
     void okAllItemsUpdateHandler_ShouldAgeAllItemsInDB() {
         Request request = new Request("/inventory/update", Request.Method.POST.asString, "foo", "foo", "foo");
         Ageable item = mockedDB.get(0);
+        int defaultItemAgeDecrementor = 1;
 
+        int expectedQuality = item.getQuality() - defaultItemAgeDecrementor;
+        int expectedSellin = item.getSellIn() - defaultItemAgeDecrementor;
         itemsController.okAllItemsUpdateHandler.apply(request);
-
-
-        assertEquals(13, item.getQuality());
-        assertEquals(2, item.getSellIn());
+        
+        assertEquals(expectedQuality, item.getQuality());
+        assertEquals(expectedSellin, item.getSellIn());
     }
 }
