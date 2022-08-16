@@ -40,7 +40,7 @@ const Admin: NextPage<AdminProps> = ({ items }) => {
           </tbody>
         </table>
         <div>
-          <button className='whitespace-nowrap py-[15px] px-[26px] lowercase bg-[#8690F4] rounded-[7px] text-[#222C40] font-medium'>Update Quality</button>
+          <button className='whitespace-nowrap py-[15px] px-[26px] w-40 lowercase bg-[#8690F4] rounded-[7px] text-[#222C40] font-medium'>Update Quality</button>
         </div>
       </div>
     </>

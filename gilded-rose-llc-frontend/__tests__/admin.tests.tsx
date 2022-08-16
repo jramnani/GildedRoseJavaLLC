@@ -3,6 +3,14 @@ import '@testing-library/jest-dom'
 import Admin from '../pages/admin'
 
 describe('Admin', () => {
+  it('should render a sub-heading of admin inventory', () => {
+    render(<Admin items={[]} />)
+
+    const heading = screen.getByRole('heading', { level: 2, name: "admin // inventory" })
+
+    expect(heading).toBeInTheDocument()
+  })
+
   it('should render the name, quality, sellin, and price of each item on the page', () => {
     const items = [
       {
