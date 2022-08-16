@@ -3,6 +3,7 @@ import { GetServerSideProps } from 'next'
 import ItemBlock from 'components/item-block'
 import { Item } from 'core/item'
 import * as api from 'core/client'
+import Title from 'components/title'
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const gateway = new api.ApiClient(fetch)
@@ -17,9 +18,7 @@ interface HomeProps {
 const Home: NextPage<HomeProps> = ({ items }) => {
   return (
     <>
-      <p className="pt-8 pb-12 text-[32px] font-roboto font-[600]">
-        available items
-      </p>
+      <Title>available items</Title>
       <div>
         <section className="grid grid-cols-3 gap-x-6 gap-y-8">
           {items.map((item, index) => (

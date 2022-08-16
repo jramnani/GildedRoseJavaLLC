@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import { GetServerSideProps } from 'next'
 import * as api from 'core/client'
+import Title from 'components/title'
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const gateway = new api.ApiClient(fetch)
@@ -22,9 +23,7 @@ interface AdminProps {
 const Admin: NextPage<AdminProps> = ({ items }) => {
   return (
     <>
-      <p className="pt-8 pb-12 text-[32px] font-roboto font-[600]">
-        admin // inventory
-      </p>
+      <Title>admin // inventory</Title>
       <div className='flex gap-x-[102px]'>
         <table className="table-auto border-collapse text-left divide-y-2 divide-[#8690F4]">
           <thead>
