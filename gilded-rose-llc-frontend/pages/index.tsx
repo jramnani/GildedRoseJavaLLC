@@ -18,7 +18,7 @@ interface HomeProps {
 
 const Home: NextPage<HomeProps> = ({ items }) => {
   return (
-    <div className="box-border px-14 pt-5 pb-10 items-center justify-between bg-[#222C40] text-white w-full h-full">
+    <div className="box-border px-14 pt-5 pb-10 bg-[#222C40] text-white min-h-screen">
       <div className="flex-col">
         <div className="items-center flex pt-10 pb-14 text-[40px] font-roboto font-[700]">
           <div className="h-20 w-24">
