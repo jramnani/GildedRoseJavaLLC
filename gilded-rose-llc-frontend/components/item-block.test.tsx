@@ -20,7 +20,7 @@ describe('ItemBlock', () => {
       price: '50',
     }
     render(<ItemBlock name={item.name} price={item.price} />)
-    const price = screen.getByText(item.price)
+    const price = screen.getByText('$' + item.price)
 
     expect(price).toBeInTheDocument()
   })

@@ -7,6 +7,7 @@ describe('Home', () => {
     render(<Home items={[]} />)
 
     const heading = screen.getByRole('heading', { name: /Gilded Rose/i })
+
     expect(heading).toBeInTheDocument()
   })
 
@@ -25,7 +26,7 @@ describe('Home', () => {
 
     items.forEach((item) => {
       expect(screen.getByText(item.name)).toBeInTheDocument()
-      expect(screen.getByText(item.price)).toBeInTheDocument()
+      expect(screen.getByText('$' + item.price)).toBeInTheDocument()
     })
   })
 })
