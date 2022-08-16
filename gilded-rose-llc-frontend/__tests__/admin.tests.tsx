@@ -2,15 +2,7 @@ import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Admin from '../pages/admin'
 
-describe('Home', () => {
-  it('should render a heading of Gilded Rose', () => {
-    render(<Admin items={[]} />)
-
-    const heading = screen.getByRole('heading', { name: /Gilded Rose/i })
-
-    expect(heading).toBeInTheDocument()
-  })
-
+describe('Admin', () => {
   it('should render the name, quality, sellin, and price of each item on the page', () => {
     const items = [
       {
