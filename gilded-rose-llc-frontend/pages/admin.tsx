@@ -1,8 +1,7 @@
 import type { NextPage } from 'next'
 import { GetServerSideProps } from 'next'
 import * as api from 'core/client'
-import Image from 'next/image'
-import logo from 'asset/images/logo.svg'
+import Header from 'components/header'
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const gateway = new api.ApiClient(fetch)
@@ -25,12 +24,7 @@ const Admin: NextPage<AdminProps> = ({ items }) => {
   return (
     <div className="box-border px-14 pt-5 pb-10 bg-[#222C40] text-white min-h-screen">
       <div className="flex-col">
-        <div className="items-center flex pt-10 pb-14 text-[40px] font-roboto font-[700]">
-          <div className="h-20 w-24">
-            <Image src={logo} alt="gilded rose logo" />
-          </div>
-          <h1 className="pl-4 lowercase">Gilded Rose</h1>
-        </div>
+        <Header />
         <p className="pt-8 pb-12 text-[32px] font-roboto font-[600]">
           admin // inventory
         </p>
