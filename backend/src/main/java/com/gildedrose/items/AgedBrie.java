@@ -6,6 +6,7 @@ public class AgedBrie implements Ageable {
     private int qualityCoefficient;
     private final Item item;
     private final int maxQuality;
+    private String id;
 
 
     public AgedBrie(Item item) {
@@ -28,6 +29,14 @@ public class AgedBrie implements Ageable {
 
     public int getSellIn() {
         return item.sellIn;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return this.id;
     }
 
     public void age() {

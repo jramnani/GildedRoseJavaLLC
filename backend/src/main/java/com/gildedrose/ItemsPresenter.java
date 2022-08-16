@@ -10,10 +10,13 @@ public class ItemsPresenter {
 
         return String.format("""
                 {
+                    "id": "%s",
                     "name": "%s",
-                    "price": "%f"
+                    "quality": "%s",
+                    "sellIn": "%s",
+                    "price": "%.2f"
                 }
-                """, item.getName(), item.getPrice());
+                """, item.getId(), item.getName(), item.getQuality(), item.getSellIn(), item.getPrice());
     }
 
     public String allItemsJson(Collection<Ageable> items) {
@@ -21,10 +24,13 @@ public class ItemsPresenter {
         for (Ageable item : items) {
             allItemsJson.append(String.format("""
                 {
+                    "id": "%s",
                     "name": "%s",
-                    "price": "%f"
+                    "quality": "%s",
+                    "sellIn": "%s",
+                    "price": "%.2f"
                 },
-                """, item.getName(), item.getPrice()));
+                """, item.getId(), item.getName(),item.getQuality(), item.getSellIn(), item.getPrice()));
         }
 
         return formatJsonBrackets(allItemsJson);

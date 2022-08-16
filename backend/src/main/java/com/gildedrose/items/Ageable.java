@@ -13,4 +13,7 @@ public interface Ageable {
     int getQuality();
 
     int getSellIn();
+    void setId(String id);
+
+    String getId();
 }

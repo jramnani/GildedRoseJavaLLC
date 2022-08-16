@@ -7,6 +7,7 @@ public class DefaultItem implements Ageable {
     private final Item item;
     private final int minQuality;
     protected int qualityCoefficient;
+    protected String id;
 
     public DefaultItem(Item item) {
         this.item = item;
@@ -33,6 +34,14 @@ public class DefaultItem implements Ageable {
 
     public int getSellIn() {
         return item.sellIn;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return this.id;
     }
 
     private int updateQuality() {

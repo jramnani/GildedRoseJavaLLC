@@ -6,6 +6,8 @@ public class BackstagePass implements Ageable {
     private final int maxQuality;
     private int qualityCoefficient;
     private final Item item;
+    private String id;
+
 
     public BackstagePass(Item item) {
         this.item = item;
@@ -32,6 +34,14 @@ public class BackstagePass implements Ageable {
 
     public int getSellIn() {
         return item.sellIn;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return this.id;
     }
 
     private int updateQuality() {

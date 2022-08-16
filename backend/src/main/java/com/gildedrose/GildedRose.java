@@ -48,6 +48,10 @@ public class GildedRose {
                 new Route("/inventory/:id", new Request.Method[]{Request.Method.GET}, itemsController.okSingleItemHandler)
         );
 
+        routes.addRoute(
+                new Route("/inventory/update", new Request.Method[]{Request.Method.POST}, itemsController.okAllItemsUpdateHandler)
+        );
+
         return routes;
     }
 
@@ -70,12 +74,30 @@ public class GildedRose {
         for (Item item : items) {
             String passedId = String.valueOf(id++);
             switch (item.name) {
-                case "Aged Brie" -> hashMapDB.put(passedId, new AgedBrie(item));
-                case "Backstage passes to a TAFKAL80ETC concert" -> hashMapDB.put(passedId, new BackstagePass(item));
-                case "Sulfuras, Hand of Ragnaros" -> hashMapDB.put(passedId, new Sulfuras(item));
-                case "Conjured" -> hashMapDB.put(passedId, new Conjured(item));
-                case "Red Wine" -> hashMapDB.put(passedId, new RedWine(item));
-                default -> hashMapDB.put(passedId, new DefaultItem(item));
+                case "Aged Brie" -> {
+                    hashMapDB.put(passedId, new AgedBrie(item));
+                    hashMapDB.get(passedId).setId(passedId);
+                }
+                case "Backstage passes to a TAFKAL80ETC concert" -> {
+                    hashMapDB.put(passedId, new BackstagePass(item));
+                    hashMapDB.get(passedId).setId(passedId);
+                }
+                case "Sulfuras, Hand of Ragnaros" -> {
+                    hashMapDB.put(passedId, new Sulfuras(item));
+                    hashMapDB.get(passedId).setId(passedId);
+                }
+                case "Conjured" -> {
+                    hashMapDB.put(passedId, new Conjured(item));
+                    hashMapDB.get(passedId).setId(passedId);
+                }
+                case "Red Wine" -> {
+                    hashMapDB.put(passedId, new RedWine(item));
+                    hashMapDB.get(passedId).setId(passedId);
+                }
+                default -> {
+                    hashMapDB.put(passedId, new DefaultItem(item));
+                    hashMapDB.get(passedId).setId(passedId);
+                }
             }
         }
 
