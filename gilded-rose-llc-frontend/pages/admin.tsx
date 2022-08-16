@@ -2,18 +2,12 @@ import type { NextPage } from 'next'
 import { GetServerSideProps } from 'next'
 import * as api from 'core/client'
 import Title from 'components/title'
+import { AdminItem } from 'core/admin-item'
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const gateway = new api.ApiClient(fetch)
   const items = await gateway.getAllItems()
   return { props: { items } }
-}
-
-interface AdminItem {
-  name: string
-  quality: string
-  sellIn: string
-  price: string
 }
 
 interface AdminProps {
