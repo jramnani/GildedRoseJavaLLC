@@ -23,7 +23,8 @@ public class Response {
         Allow("Allow: "),
         ContentLength("Content-Length: "),
         ContentType("Content-Type: "),
-        Location("Location: ")
+        Location("Location: "),
+        AccessControlAllowOrigin("Access-Control-Allow-Origin: ")
         ;
 
         public final String asString;
