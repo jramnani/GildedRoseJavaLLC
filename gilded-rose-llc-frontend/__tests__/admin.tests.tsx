@@ -6,7 +6,10 @@ describe('Admin', () => {
   it('should render a sub-heading of admin inventory', () => {
     render(<Admin items={[]} />)
 
-    const heading = screen.getByRole('heading', { level: 2, name: "admin // inventory" })
+    const heading = screen.getByRole('heading', {
+      level: 2,
+      name: 'admin // inventory',
+    })
 
     expect(heading).toBeInTheDocument()
   })
