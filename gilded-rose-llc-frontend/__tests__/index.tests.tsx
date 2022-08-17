@@ -3,10 +3,10 @@ import '@testing-library/jest-dom'
 import Home from '../pages/index'
 
 describe('Home', () => {
-  it('should render a heading of Gilded Rose', () => {
+  it('should render a sub-heading of admin inventory', () => {
     render(<Home items={[]} />)
 
-    const heading = screen.getByRole('heading', { name: /Gilded Rose/i })
+    const heading = screen.getByRole('heading', { level: 2, name: "available items" })
 
     expect(heading).toBeInTheDocument()
   })
