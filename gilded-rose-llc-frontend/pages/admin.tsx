@@ -3,18 +3,25 @@ import { GetServerSideProps } from 'next'
 import * as api from 'core/client'
 import Title from 'components/title'
 import { AdminItem } from 'core/admin-item'
+import React, { useState } from 'react';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const gateway = new api.ApiClient(fetch)
-  const items = await gateway.getAllItems()
-  return { props: { items } }
+  const initialItems = await gateway.getAllItems()
+  return { props: { initialItems } }
 }
 
 interface AdminProps {
-  items: AdminItem[]
+  initialItems: AdminItem[]
 }
 
-const Admin: NextPage<AdminProps> = ({ items }) => {
+const Admin: NextPage<AdminProps> = ({ initialItems }) => {
+  const [items, setItems] = useState(initialItems)
+  const updateItems = async () => {
+    const gateway = new api.ApiClient(fetch)
+    const items = await gateway.updateAllItems()
+    setItems(items)
+  }
   return (
     <>
       <Title>admin // inventory</Title>
@@ -40,7 +47,7 @@ const Admin: NextPage<AdminProps> = ({ items }) => {
           </tbody>
         </table>
         <div>
-          <button className='whitespace-nowrap py-[15px] px-[26px] w-40 lowercase bg-[#8690F4] rounded-[7px] text-[#222C40] font-medium'>Update Quality</button>
+          <button onClick={updateItems} className='whitespace-nowrap py-[15px] px-[26px] w-40 lowercase bg-[#8690F4] rounded-[7px] text-[#222C40] font-medium'>Update Quality</button>
         </div>
       </div>
     </>

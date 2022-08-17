@@ -4,7 +4,7 @@ import Admin from '../pages/admin'
 
 describe('Admin', () => {
   it('should render a sub-heading of admin inventory', () => {
-    render(<Admin items={[]} />)
+    render(<Admin initialItems={[]} />)
 
     const heading = screen.getByRole('heading', {
       level: 2,
@@ -29,7 +29,7 @@ describe('Admin', () => {
         price: '50',
       },
     ]
-    render(<Admin items={items} />)
+    render(<Admin initialItems={items} />)
 
     items.forEach((item) => {
       expect(screen.getByText(item.name)).toBeInTheDocument()
@@ -40,10 +40,11 @@ describe('Admin', () => {
   })
 
   it('should render the update button', () => {
-    render(<Admin items={[]} />)
+    render(<Admin initialItems={[]} />)
 
     const updateButton = screen.getByRole('button', { name: /update quality/i })
 
     expect(updateButton).toBeInTheDocument()
   })
 })
+
