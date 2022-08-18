@@ -6,7 +6,10 @@ describe('Home', () => {
   it('should render a sub-heading of admin inventory', () => {
     render(<Home items={[]} />)
 
-    const heading = screen.getByRole('heading', { level: 2, name: "available items" })
+    const heading = screen.getByRole('heading', {
+      level: 2,
+      name: 'available items',
+    })
 
     expect(heading).toBeInTheDocument()
   })
@@ -14,10 +17,12 @@ describe('Home', () => {
   it('should render the name and price of each item on the page', () => {
     const items = [
       {
+        id: '1',
         name: 'aged brie',
         price: '100',
       },
       {
+        id: '2',
         name: 'conjured',
         price: '50',
       },

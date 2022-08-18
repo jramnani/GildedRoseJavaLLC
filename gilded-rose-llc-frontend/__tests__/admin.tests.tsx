@@ -17,12 +17,14 @@ describe('Admin', () => {
   it('should render the name, quality, sellin, and price of each item on the page', () => {
     const items = [
       {
+        id: '1',
         name: 'aged brie',
         quality: '13',
         sellIn: '29',
         price: '100',
       },
       {
+        id: '2',
         name: 'conjured',
         quality: '12',
         sellIn: '25',
@@ -47,4 +49,3 @@ describe('Admin', () => {
     expect(updateButton).toBeInTheDocument()
   })
 })
-
