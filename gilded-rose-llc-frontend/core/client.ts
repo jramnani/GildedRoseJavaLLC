@@ -18,7 +18,6 @@ const updateAllItems = async (
   const response = await fetchMethod(url, {
     method: 'POST',
   })
-  console.log('Response: ', response)
   const items = response.json()
   return items
 }
