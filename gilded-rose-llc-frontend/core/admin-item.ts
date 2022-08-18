@@ -1,6 +1,7 @@
 export interface AdminItem {
-    name: string
-    quality: string
-    sellIn: string
-    price: string
+  id: string
+  name: string
+  quality: string
+  sellIn: string
+  price: string
 }

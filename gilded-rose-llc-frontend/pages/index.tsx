@@ -21,8 +21,8 @@ const Home: NextPage<HomeProps> = ({ items }) => {
       <Title>available items</Title>
       <div>
         <section className="grid grid-cols-3 gap-x-6 gap-y-8">
-          {items.map((item, index) => (
-            <ItemBlock key={index} name={item.name} price={item.price} />
+          {items.map((item) => (
+            <ItemBlock key={item.id} name={item.name} price={item.price} />
           ))}
         </section>
       </div>
