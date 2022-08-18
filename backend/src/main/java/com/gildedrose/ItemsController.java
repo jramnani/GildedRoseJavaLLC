@@ -23,6 +23,7 @@ public class ItemsController {
         return new ResponseBuilder()
                 .newUp()
                 .body(itemsPresenter.allItemsJson(items))
+                .headers(Response.HeaderField.AccessControlAllowOrigin, "*")
                 .headers(Response.HeaderField.ContentType, "application/json")
                 .build();
     };
@@ -39,6 +40,7 @@ public class ItemsController {
         return new ResponseBuilder()
                 .newUp()
                 .body(itemsPresenter.singleItemJson(item))
+                .headers(Response.HeaderField.AccessControlAllowOrigin, "*")
                 .headers(Response.HeaderField.ContentType, "application/json")
                 .build();
     };
