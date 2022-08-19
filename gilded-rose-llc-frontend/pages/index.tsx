@@ -1,21 +1,18 @@
 import type { NextPage } from 'next'
-import { GetServerSideProps } from 'next'
 import ItemBlock from 'components/item-block'
 import { Item } from 'core/item'
-import * as api from 'core/client'
 import Title from 'components/title'
+import { useState } from 'react'
+import { useClient } from 'core/api'
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const gateway = new api.ApiClient(fetch)
-  const items = await gateway.getAllItems()
-  return { props: { items } }
-}
+const Home: NextPage = () => {
+  const [items, setItems] = useState<Item[]>([])
+  const client = useClient()
 
-interface HomeProps {
-  items: Item[]
-}
+  useState(() => {
+    client.getAllItems().then((items) => setItems(items))
+  })
 
-const Home: NextPage<HomeProps> = ({ items }) => {
   return (
     <>
       <Title>available items</Title>
