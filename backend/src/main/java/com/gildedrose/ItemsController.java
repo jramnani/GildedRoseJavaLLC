@@ -23,13 +23,14 @@ public class ItemsController {
         return new ResponseBuilder()
                 .newUp()
                 .body(itemsPresenter.allItemsJson(items))
+                .headers(Response.HeaderField.AccessControlAllowOrigin, "*")
                 .headers(Response.HeaderField.ContentType, "application/json")
                 .build();
     };
 
     final Function<Request, Response> okSingleItemHandler = request -> {
         Ageable item = itemsRepository.get(request.getParameter());
-        if(itemNotFound(item)) {
+        if (itemNotFound(item)) {
             return new ResponseBuilder()
                     .newUp()
                     .status(Response.Status.NotFound)
@@ -39,6 +40,7 @@ public class ItemsController {
         return new ResponseBuilder()
                 .newUp()
                 .body(itemsPresenter.singleItemJson(item))
+                .headers(Response.HeaderField.AccessControlAllowOrigin, "*")
                 .headers(Response.HeaderField.ContentType, "application/json")
                 .build();
     };
@@ -49,6 +51,7 @@ public class ItemsController {
         return new ResponseBuilder()
                 .newUp()
                 .body(itemsPresenter.allItemsJson(items))
+                .headers(Response.HeaderField.AccessControlAllowOrigin, "*")
                 .headers(Response.HeaderField.ContentType, "application/json")
                 .build();
     };
